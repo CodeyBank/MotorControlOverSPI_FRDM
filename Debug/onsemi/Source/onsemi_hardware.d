@@ -27,7 +27,8 @@ onsemi/Source/onsemi_hardware.o onsemi/Source/onsemi_hardware.d: \
  C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\board/peripherals.h \
  C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\drivers/fsl_ctimer.h \
  C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\drivers/fsl_clock.h \
- C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\drivers/fsl_port.h
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\drivers/fsl_port.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/T1S_Hardware.h
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/onsemi_hardware.h:
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\utilities/fsl_debug_console.h:
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\drivers/fsl_common.h:
@@ -56,3 +57,4 @@ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Pro
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\drivers/fsl_ctimer.h:
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\drivers/fsl_clock.h:
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\drivers/fsl_port.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/T1S_Hardware.h:

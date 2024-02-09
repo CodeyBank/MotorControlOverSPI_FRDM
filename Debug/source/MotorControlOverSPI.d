@@ -30,7 +30,25 @@ source/MotorControlOverSPI.o source/MotorControlOverSPI.d: \
  C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\component\serial_manager/fsl_component_serial_manager.h \
  C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\component\serial_manager/fsl_component_serial_port_uart.h \
  C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\component\uart/fsl_adapter_uart.h \
- C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/onsemi_hardware.h
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/onsemi_hardware.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\include/FreeRTOS.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/FreeRTOSConfig.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\include/projdefs.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\include/portable.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\include/deprecated_definitions.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\portable\GCC\ARM_CM33_NTZ\non_secure/portmacro.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\portable\GCC\ARM_CM33_NTZ\non_secure/portmacrocommon.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\include/mpu_wrappers.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\include/task.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\include/list.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\include/queue.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\include/task.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\include/timers.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/ncn26010.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/T1S_OS.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/T1S_Hardware.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/T1S_TCP-IP.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/ncn26010.h
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\board/board.h:
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\board/clock_config.h:
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\drivers/fsl_common.h:
@@ -62,3 +80,21 @@ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Pro
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\component\serial_manager/fsl_component_serial_port_uart.h:
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\component\uart/fsl_adapter_uart.h:
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/onsemi_hardware.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\include/FreeRTOS.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/FreeRTOSConfig.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\include/projdefs.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\include/portable.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\include/deprecated_definitions.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\portable\GCC\ARM_CM33_NTZ\non_secure/portmacro.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\portable\GCC\ARM_CM33_NTZ\non_secure/portmacrocommon.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\include/mpu_wrappers.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\include/task.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\include/list.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\include/queue.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\include/task.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freertos\freertos-kernel\include/timers.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/ncn26010.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/T1S_OS.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/T1S_Hardware.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/T1S_TCP-IP.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/ncn26010.h:

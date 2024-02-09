@@ -20,6 +20,10 @@ component/serial_manager \
 component/uart \
 device \
 drivers \
+freertos/freertos-kernel \
+freertos/freertos-kernel/portable/GCC/ARM_CM33_NTZ/non_secure \
+freertos/freertos-kernel/portable/MemMang \
+onsemi/FreeRTOS-Plus-TCP/source \
 onsemi/Source \
 source \
 startup \

@@ -10,6 +10,9 @@
 #include "fsl_gpio.h"
 #include "fsl_lpspi.h"
 #include "peripherals.h"
+#include "T1S_Hardware.h"
+
+static ISR_t dataReadyCallback = NULL;
 
 // -> Global variables for GPIO  ... DO not modify .struct here. Do so using config tools
 NCN_PinDef_t pcs_pin = { .base = NCN_PERIPHERAL_INIT_IRQ_Pin_GPIO, .pin =
@@ -44,7 +47,7 @@ void NCN_Timebase_Callback(uint32_t flags) {
 #endif //SE_DEBUG
 }
 
-static inline uint32_t GetTick(void) {
+inline uint32_t GetTick(void) {
 	return g_uwtick;
 }
 
@@ -64,11 +67,16 @@ void NCN_IRQ_Handler(void) {
 	/* Clear pin flags 0 */
 	GPIO_GpioClearInterruptChannelFlags(GPIO0, pin_flags0, 0U);
 	PRINTF("IRQ called at: %6d \n", GetTick());
+	if (dataReadyCallback != NULL )
+	{
+		dataReadyCallback(0); // note tick is not implemented
+	}
 	/* Add for ARM errata 838869, affects Cortex-M4, Cortex-M4F
 	 Store immediate overlapping exception return operation might vector to incorrect interrupt. */
 #if defined __CORTEX_M && (__CORTEX_M == 4U)
     __DSB();
   #endif
+    SDK_ISR_EXIT_BARRIER;
 }
 
 // -> SPI Communication
@@ -103,4 +111,38 @@ void NCN_SPI_Transfer(uint8_t *rx_buffer, uint8_t *tx_buffer, uint16_t num_bytes
 
 	// de-assert the PCS PIN
 	NCN_SetPinState(pcs_pin, ON);
+}
+
+
+// -> NCN Specific
+
+uint32_t SPI_Init(){
+
+	return SUCCESS;
+}
+
+
+uint32_t SetDataReadyISR(ISR_t callback)
+{
+    if (callback != NULL){
+    	dataReadyCallback = callback;
+    }
+	return SUCCESS;
+}
+
+
+uint32_t SPI_Cleanup()
+{
+	return SUCCESS;
+}
+
+
+uint32_t SleepUntilISR()
+{
+	return SUCCESS;
+}
+
+uint32_t SPI_Transfer(uint8_t* rx_buffer, uint8_t* tx_buffer, uint16_t num_bytes_to_transfer){
+	NCN_SPI_Transfer(rx_buffer, tx_buffer, num_bytes_to_transfer);
+	return SUCCESS;
 }

@@ -12,6 +12,10 @@ RM := rm -rf
 -include startup/subdir.mk
 -include source/subdir.mk
 -include onsemi/Source/subdir.mk
+-include onsemi/FreeRTOS-Plus-TCP/source/subdir.mk
+-include freertos/freertos-kernel/portable/MemMang/subdir.mk
+-include freertos/freertos-kernel/portable/GCC/ARM_CM33_NTZ/non_secure/subdir.mk
+-include freertos/freertos-kernel/subdir.mk
 -include drivers/subdir.mk
 -include device/subdir.mk
 -include component/uart/subdir.mk

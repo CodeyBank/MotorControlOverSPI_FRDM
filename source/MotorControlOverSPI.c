@@ -19,11 +19,24 @@
 #include "onsemi_hardware.h"
 /* TODO: insert other include files here. */
 
+// FreeRTOS includes
+#include "FreeRTOS.h"
+#include "task.h"
+#include "queue.h"
+#include "timers.h"
+
+// NCN includes
+
+#include "ncn26010.h"
+#include "T1S_OS.h"
+#include "T1S_TCP-IP.h"
+
+
 /* TODO: insert other definitions and declarations here. */
 
 extern NCN_PinDef_t pcs_pin;
 extern NCN_PinDef_t reset_pin;
-#define SE_DEBUG
+//#define SE_DEBUG
 
 #ifdef SE_DEBUG
 #define SIZE 12
@@ -51,10 +64,17 @@ int main(void) {
     	tx_buffer[i] = i;
     }
 #endif //SE_DEBUG
+    NCN26010_Init();
+    OS_Start();
+
     while(1) {
+
+#ifdef SE_DEBUG
     	PRINTF("Sending data ...\n");
     	NCN_SPI_Transfer(rx_buffer, tx_buffer, SIZE);
     	DelayMs(2000);
     }
+#endif //SE_DEBUG
+	}
     return 0 ;
 }

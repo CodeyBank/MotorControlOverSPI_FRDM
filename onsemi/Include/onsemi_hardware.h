@@ -21,6 +21,12 @@ typedef enum{
 	OFF, ON
 }NCN_PinState_t;
 
+// custom error codes
+enum NCNERROR {
+	SUCCESS = 0U,
+	FAIL
+};
+
 
 // -> GPIO Modifications
 void NCN_SetPinState(NCN_PinDef_t pindef, NCN_PinState_t state);

@@ -1,11 +1,16 @@
 C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\drivers/fsl_gpio.h:329:20:GPIO_PinWrite	24	static
 C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\drivers/fsl_gpio.h:388:20:GPIO_PortToggle	16	static
 C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\drivers/fsl_lpspi.h:570:23:LPSPI_GetRxFifoSize	16	static
-../onsemi/Source/onsemi_hardware.c:24:6:NCN_SetPinState	32	static
-../onsemi/Source/onsemi_hardware.c:28:6:NCN_TogglePinState	24	static
-../onsemi/Source/onsemi_hardware.c:35:13:IncTick	4	static
-../onsemi/Source/onsemi_hardware.c:39:6:NCN_Timebase_Callback	16	static
-../onsemi/Source/onsemi_hardware.c:47:24:GetTick	4	static
-../onsemi/Source/onsemi_hardware.c:51:6:DelayMs	24	static
-../onsemi/Source/onsemi_hardware.c:58:6:GPIO00_IRQHandler	16	static
-../onsemi/Source/onsemi_hardware.c:76:6:NCN_SPI_Transfer	32	static
+../onsemi/Source/onsemi_hardware.c:27:6:NCN_SetPinState	32	static
+../onsemi/Source/onsemi_hardware.c:31:6:NCN_TogglePinState	24	static
+../onsemi/Source/onsemi_hardware.c:38:13:IncTick	4	static
+../onsemi/Source/onsemi_hardware.c:42:6:NCN_Timebase_Callback	16	static
+../onsemi/Source/onsemi_hardware.c:50:17:GetTick	4	static
+../onsemi/Source/onsemi_hardware.c:54:6:DelayMs	24	static
+../onsemi/Source/onsemi_hardware.c:61:6:GPIO00_IRQHandler	16	static
+../onsemi/Source/onsemi_hardware.c:84:6:NCN_SPI_Transfer	32	static
+../onsemi/Source/onsemi_hardware.c:119:10:SPI_Init	4	static
+../onsemi/Source/onsemi_hardware.c:125:10:SetDataReadyISR	16	static
+../onsemi/Source/onsemi_hardware.c:134:10:SPI_Cleanup	4	static
+../onsemi/Source/onsemi_hardware.c:140:10:SleepUntilISR	4	static
+../onsemi/Source/onsemi_hardware.c:145:10:SPI_Transfer	24	static

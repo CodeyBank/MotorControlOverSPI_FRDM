@@ -1,0 +1,10 @@
+C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\CMSIS/core_cm33.h:2378:22:__NVIC_EnableIRQ	16	static
+C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\CMSIS/core_cm33.h:2575:22:__NVIC_SetPriority	16	static
+C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\drivers/fsl_common_arm.h:514:24:EnableIRQ	24	static
+C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\drivers/fsl_ctimer.h:497:20:CTIMER_StartTimer	16	static
+../board/peripherals.c:172:13:TimeBase_init	8	static
+../board/peripherals.c:222:13:NCN_IRQ_Interrupt_init	8	static
+../board/peripherals.c:291:13:NCN_SPI_init	8	static
+../board/peripherals.c:298:6:BOARD_InitPeripherals	4	static
+../board/peripherals.c:303:6:NCN_InitPeripherals	8	static
+../board/peripherals.c:314:6:BOARD_InitBootPeripherals	8	static

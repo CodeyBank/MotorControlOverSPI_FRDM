@@ -1,0 +1,11 @@
+C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\drivers/fsl_gpio.h:329:20:GPIO_PinWrite	24	static
+C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\drivers/fsl_gpio.h:388:20:GPIO_PortToggle	16	static
+C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\drivers/fsl_lpspi.h:570:23:LPSPI_GetRxFifoSize	16	static
+../onsemi/Source/onsemi_hardware.c:24:6:NCN_SetPinState	32	static
+../onsemi/Source/onsemi_hardware.c:28:6:NCN_TogglePinState	24	static
+../onsemi/Source/onsemi_hardware.c:35:13:IncTick	4	static
+../onsemi/Source/onsemi_hardware.c:39:6:NCN_Timebase_Callback	16	static
+../onsemi/Source/onsemi_hardware.c:47:24:GetTick	4	static
+../onsemi/Source/onsemi_hardware.c:51:6:DelayMs	24	static
+../onsemi/Source/onsemi_hardware.c:58:6:GPIO00_IRQHandler	16	static
+../onsemi/Source/onsemi_hardware.c:76:6:NCN_SPI_Transfer	32	static

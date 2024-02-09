@@ -1,0 +1,10 @@
+C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\drivers/fsl_clock.h:1389:20:CLOCK_EnableClock	24	static
+C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\drivers/fsl_port.h:355:20:PORT_SetPinConfig	32	static
+C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\drivers/fsl_port.h:458:20:PORT_SetPinMux	24	static
+C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\drivers/fsl_gpio.h:466:20:GPIO_SetPinInterruptConfig	24	static
+../board/pin_mux.c:310:6:BOARD_InitBootPins	8	static
+../board/pin_mux.c:336:6:BOARD_InitDEBUG_UARTPins	16	static
+../board/pin_mux.c:397:6:BOARD_InitSWD_DEBUGPins	24	static
+../board/pin_mux.c:494:6:BOARD_InitLEDsPins	32	static
+../board/pin_mux.c:616:6:BOARD_InitBUTTONsPins	24	static
+../board/pin_mux.c:710:6:NCN_Peripheral_Init	24	static

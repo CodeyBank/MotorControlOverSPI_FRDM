@@ -66,7 +66,7 @@ void NCN_IRQ_Handler(void) {
 
 	/* Clear pin flags 0 */
 	GPIO_GpioClearInterruptChannelFlags(GPIO0, pin_flags0, 0U);
-	PRINTF("IRQ called at: %6d \n", GetTick());
+//	PRINTF("IRQ called at: %6d \n", GetTick());
 	if (dataReadyCallback != NULL )
 	{
 		dataReadyCallback(0); // note tick is not implemented

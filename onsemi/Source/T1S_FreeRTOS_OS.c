@@ -9,8 +9,8 @@
 #include "FreeRTOS_IP.h"
 #include "event_groups.h"
 #include "ncn26010.h"
-#include "fsl_debug_console.h"
-//#define PRINTF(...) (0)
+//#include "fsl_debug_console.h"
+#define PRINTF(...) (0)
 
 /* Declare a variable to hold the handle of the created event group. */
 EventGroupHandle_t xEventGroupHandle;
@@ -56,7 +56,7 @@ uint32_t OS_WaitUntilISR() {
 			-1);/* Wait a maximum of 100ms for either bit to be set. */
 
 	if(uxBits != 0x01) {
-		//PRINTF("Unknown event from T1S_FreeRTOS");
+		PRINTF("Unknown event from T1S_FreeRTOS");
 		return UNKNOWN_ERROR;
 	}
 	else{

@@ -30,7 +30,8 @@
 #include "ncn26010.h"
 #include "T1S_OS.h"
 #include "T1S_TCP-IP.h"
-
+#include "freemaster_integration.h"
+#include "udpecho.h"
 
 /* TODO: insert other definitions and declarations here. */
 
@@ -65,6 +66,8 @@ int main(void) {
     }
 #endif //SE_DEBUG
     NCN26010_Init();
+    start_task();
+//    vTaskCreateUDPServer( configMINIMAL_STACK_SIZE*6,tskIDLE_PRIORITY );
     OS_Start();
 
     while(1) {

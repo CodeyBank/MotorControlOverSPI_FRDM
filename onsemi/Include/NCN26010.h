@@ -38,8 +38,8 @@
 #define USE_INTERNAL_MAC_ADDRESS				0 //If true read the MAC stored in the NCN26010 otherwise use DEFAULT_MAC_ADDRESS
 #define MAC_PROMISCUOUS_MODE					0
 #define DEFAULT_MAC_ADDRESS {0x60, 0xC0, 0xBF, 0x01, 0x01, 0x01}
-#define DEFAULT_IP_ADDRESS_ARRAY {192, 1, 1, 1}
-#define DEFAULT_IP_ADDRESS 0x010101c0	//matches 192.168.1.20
+#define DEFAULT_IP_ADDRESS_ARRAY {192, 1, 1, 2}
+#define DEFAULT_IP_ADDRESS 0x020101c0	//matches 192.168.1.20
 
 /*************************************************************************************************
 *  Symbolic constants                                                                            *

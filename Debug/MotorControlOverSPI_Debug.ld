@@ -5,7 +5,7 @@
  * Generated linker script file for MCXN947
  * Created from linkscript.ldt by FMCreateLinkLibraries
  * Using Freemarker v2.3.30
- * MCUXpresso IDE v11.9.0 [Build 2144] [2024-01-05] on Feb 9, 2024, 5:20:16 PM
+ * MCUXpresso IDE v11.9.0 [Build 2144] [2024-01-05] on Feb 19, 2024, 4:23:20 PM
  */
 
 INCLUDE "MotorControlOverSPI_Debug_library.ld"

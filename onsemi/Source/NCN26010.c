@@ -804,8 +804,8 @@ uint32_t T1S_ClearStatus(void)
 
 uint32_t T1S_Transmit(uint8_t *p_tcpipDataBuffer, uint16_t num_bytes_to_transmit)
 {
-	uint8_t txBuffer[2108] __attribute__((aligned(4))) = {0}; //! Total required chunks is 31(31 x 64) but kept one extra chunk bytes added extra to buffer so total 32x64
-	uint8_t rxBuffer[2108] __attribute__((aligned(4))) = {0};
+	static uint8_t txBuffer[2108] __attribute__((aligned(4))) = {0}; //! Total required chunks is 31(31 x 64) but kept one extra chunk bytes added extra to buffer so total 32x64
+	static uint8_t rxBuffer[2108] __attribute__((aligned(4))) = {0};
 
 	uint16_t sentChunkCount = 0;
 	uint16_t numberOfChunksToSend = 0;
@@ -1031,8 +1031,8 @@ uint32_t T1S_Transmit(uint8_t *p_tcpipDataBuffer, uint16_t num_bytes_to_transmit
 uint32_t T1S_Receive(stDataReceive_t *p_dataReceiveInfo, uint16_t num_chunks_to_collect)
 {
 	uint32_t errorCode = OK;
-	uint8_t txBuffer[2108] __attribute__((aligned(4))) = {0}; //! Total required chunks is 31(31 x 64) but kept one extra chunk bytes added extra to buffer so total 32x64
-	uint8_t rxBuffer[2108] __attribute__((aligned(4))) = {0};
+	static uint8_t txBuffer[2108] __attribute__((aligned(4))) = {0}; //! Total required chunks is 31(31 x 64) but kept one extra chunk bytes added extra to buffer so total 32x64
+	static uint8_t rxBuffer[2108] __attribute__((aligned(4))) = {0};
 	uint8_t bufferIndex = 0;
 	uint8_t receiveDataStartOffset = 0;
 	uint8_t numberOfChunksToReceive = 0;

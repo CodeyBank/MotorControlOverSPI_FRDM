@@ -10,9 +10,9 @@
 #include "FreeRTOS_IP_Private.h"
 #include "NetworkBufferManagement.h"
 #include "ncn26010.h"
-#include "fsl_debug_console.h"
+//#include "fsl_debug_console.h"
 // #include <printf.h>
-//#define PRINTF(...) (0)
+#define PRINTF(...) (0)
 
 uint8_t g_currentNodeMACAddr[SIZE_OF_MAC_ADDR] = DEFAULT_MAC_ADDRESS;
 

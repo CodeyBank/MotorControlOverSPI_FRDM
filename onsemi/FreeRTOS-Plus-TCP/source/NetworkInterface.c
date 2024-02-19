@@ -39,7 +39,7 @@
 /* RSL10 includes. */
 #include <NCN26010.h>
 // #include <printf.h>
-//#define PRINTF(...) (0)
+#define PRINTF(...) (0)
 
 /* If ipconfigETHERNET_DRIVER_FILTERS_FRAME_TYPES is set to 1, then the Ethernet
  * driver will filter incoming packets and only pass the stack those packets it

@@ -45,6 +45,26 @@ extern NCN_PinDef_t reset_pin;
 	uint8_t rx_buffer[SIZE] ={0};
 #endif //SE_DEBUG
 
+
+
+	// freemaster integrations
+#include "freemaster.h"
+#include "freemaster_example.h"
+#include "freemaster_net.h"
+
+/* Stack size of the temporary lwIP initialization thread. */
+#define EXAMPLE_THREAD_STACKSIZE 1024
+
+/* Priority of the temporary lwIP initialization thread. */
+#define EXAMPLE_FMSTR_THREAD_PRIO 3
+
+/* Priority of the temporary lwIP initialization thread. */
+#define EXAMPLE_APP_THREAD_PRIO 7
+
+static FMSTR_BOOL fmstr_initialized = FMSTR_FALSE;
+
+static void fmstr_task(void *arg);
+static void example_task(void *arg);
 /*
  * @brief   Application entry point.
  */
@@ -66,8 +86,27 @@ int main(void) {
     }
 #endif //SE_DEBUG
     NCN26010_Init();
-    start_task();
+    FMSTR_NET_IF_CAPS caps;
+    memset(&caps, 0, sizeof(caps));
+//    start_task();
 //    vTaskCreateUDPServer( configMINIMAL_STACK_SIZE*6,tskIDLE_PRIORITY );
+
+    /* FreeMaster task */
+	if(xTaskCreate(fmstr_task, "fmstr_task", EXAMPLE_THREAD_STACKSIZE, NULL, EXAMPLE_FMSTR_THREAD_PRIO, NULL) == pdFAIL)
+		PRINTF("fmstr_task: Task creation failed.");
+//
+//	/* Example application task */
+//	if(xTaskCreate(example_task, "example_task", EXAMPLE_THREAD_STACKSIZE -512, NULL, EXAMPLE_APP_THREAD_PRIO, NULL) == pdFAIL)
+//		PRINTF("example_task: Task creation failed.");
+
+	FMSTR_ASSERT_RETURN(FMSTR_NET_DRV.GetCaps != NULL, 0);
+	FMSTR_NET_DRV.GetCaps(&caps);
+
+	PRINTF("\n\nFreeMaster %s %s Example\n\n",
+		   ((caps.flags & FMSTR_NET_IF_CAPS_FLAG_UDP) != 0U ? "UDP" : "TCP"),
+		   (FMSTR_NET_BLOCKING_TIMEOUT == 0 ? "Non-Blocking" : "Blocking"));
+
+
     OS_Start();
 
     while(1) {
@@ -81,3 +120,61 @@ int main(void) {
 	}
     return 0 ;
 }
+
+
+
+static void example_task(void *arg)
+{
+    while(!fmstr_initialized)
+    {
+        vTaskDelay(10);
+    };
+
+    /* Generic example initialization code */
+    FMSTR_Example_Init_Ex(FMSTR_FALSE);
+    PRINTF("Example task initialzied \n");
+
+    while(1)
+    {
+        /* Increment test variables periodically, use the
+           FreeMASTER PC Host tool to visualize the variables */
+        FMSTR_Example_Poll_Ex(FMSTR_FALSE);
+
+        /* Check the network connection and DHCP status periodically */
+//        Network_Poll();
+    }
+    vTaskDelay(40);
+}
+
+/*
+ * FreeMASTER task.
+ *
+ * Network communication takes place here. This task sleeps when waiting
+ * for a communication and lets the other example tasks to run.
+ */
+static void fmstr_task(void *arg)
+{
+
+   /* FreeMASTER driver initialization */
+    FMSTR_Init();
+
+    fmstr_initialized = FMSTR_TRUE;
+
+    while(1)
+    {
+        /* The FreeMASTER poll handles the communication interface and protocol
+           processing. This call will block the task execution when no communication
+           takes place (also see FMSTR_NET_BLOCKING_TIMEOUT option) */
+        FMSTR_Poll();
+
+        /* When no blocking timeout is specified, the FMSTR_Poll() returns
+           immediately without any blocking. We need to sleep to let other
+           tasks to run. */
+#if FMSTR_NET_BLOCKING_TIMEOUT == 0
+        vTaskDelay(1);
+#endif
+        vTaskDelay(10);
+    }
+}
+
+

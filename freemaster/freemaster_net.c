@@ -111,7 +111,7 @@ static FMSTR_BOOL _FMSTR_NetInit(void)
         return FMSTR_FALSE;
     }
 
-    return FMSTR_FALSE;
+    return FMSTR_TRUE;
 }
 
 /*******************************************************************************

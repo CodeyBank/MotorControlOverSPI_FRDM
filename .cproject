@@ -132,6 +132,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/MotorControlOverSPI/freertos/freertos-kernel/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/MotorControlOverSPI/onsemi/FreeRTOS-Plus-TCP/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/MotorControlOverSPI/freertos/freertos-kernel/portable/GCC/ARM_CM33_NTZ/non_secure}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/MotorControlOverSPI/example_data}&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.include.files.1268646542" name="Include files (-include)" superClass="gnu.c.compiler.option.include.files" useByScannerDiscovery="false"/>
 								<option id="com.crt.advproject.gcc.exe.debug.option.optimization.level.807944481" name="Optimization Level" superClass="com.crt.advproject.gcc.exe.debug.option.optimization.level" useByScannerDiscovery="true"/>

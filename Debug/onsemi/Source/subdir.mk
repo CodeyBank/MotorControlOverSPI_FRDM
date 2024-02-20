@@ -7,6 +7,7 @@ C_SRCS += \
 ../onsemi/Source/NCN26010.c \
 ../onsemi/Source/T1S_FreeRTOS_OS.c \
 ../onsemi/Source/T1S_FreeRTOS_TCP-IP.c \
+../onsemi/Source/freemaster_example.c \
 ../onsemi/Source/freemaster_integration.c \
 ../onsemi/Source/onsemi_hardware.c \
 ../onsemi/Source/udpecho.c 
@@ -15,6 +16,7 @@ C_DEPS += \
 ./onsemi/Source/NCN26010.d \
 ./onsemi/Source/T1S_FreeRTOS_OS.d \
 ./onsemi/Source/T1S_FreeRTOS_TCP-IP.d \
+./onsemi/Source/freemaster_example.d \
 ./onsemi/Source/freemaster_integration.d \
 ./onsemi/Source/onsemi_hardware.d \
 ./onsemi/Source/udpecho.d 
@@ -23,6 +25,7 @@ OBJS += \
 ./onsemi/Source/NCN26010.o \
 ./onsemi/Source/T1S_FreeRTOS_OS.o \
 ./onsemi/Source/T1S_FreeRTOS_TCP-IP.o \
+./onsemi/Source/freemaster_example.o \
 ./onsemi/Source/freemaster_integration.o \
 ./onsemi/Source/onsemi_hardware.o \
 ./onsemi/Source/udpecho.o 
@@ -32,7 +35,7 @@ OBJS += \
 onsemi/Source/%.o: ../onsemi/Source/%.c onsemi/Source/subdir.mk
 	@echo 'Building file: $<'
 	@echo 'Invoking: MCU C Compiler'
-	arm-none-eabi-gcc -D__REDLIB__ -DCPU_MCXN947VDF -DCPU_MCXN947VDF_cm33 -DCPU_MCXN947VDF_cm33_core0 -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -DSERIAL_PORT_TYPE_UART=1 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\board" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\drivers" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\device" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\utilities" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\component\uart" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\component\serial_manager" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\component\lists" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\CMSIS" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\startup" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\freemaster" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\freemaster\platforms" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\freemaster\drivers" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\source" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\onsemi\Include" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\freertos\freertos-kernel\portable\GCC\ARM_CM33_NTZ" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\freertos\freertos-kernel\include" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\onsemi\FreeRTOS-Plus-TCP\include" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\freertos\freertos-kernel\portable\GCC\ARM_CM33_NTZ\non_secure" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -fmerge-constants -fmacro-prefix-map="$(<D)/"= -mcpu=cortex-m33 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
+	arm-none-eabi-gcc -D__REDLIB__ -DCPU_MCXN947VDF -DCPU_MCXN947VDF_cm33 -DCPU_MCXN947VDF_cm33_core0 -DSDK_OS_BAREMETAL -DSDK_DEBUGCONSOLE=1 -DCR_INTEGER_PRINTF -DPRINTF_FLOAT_ENABLE=0 -DSERIAL_PORT_TYPE_UART=1 -D__MCUXPRESSO -D__USE_CMSIS -DDEBUG -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\board" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\drivers" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\device" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\utilities" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\component\uart" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\component\serial_manager" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\component\lists" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\CMSIS" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\startup" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\freemaster" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\freemaster\platforms" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\freemaster\drivers" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\source" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\onsemi\Include" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\freertos\freertos-kernel\portable\GCC\ARM_CM33_NTZ" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\freertos\freertos-kernel\include" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\onsemi\FreeRTOS-Plus-TCP\include" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\freertos\freertos-kernel\portable\GCC\ARM_CM33_NTZ\non_secure" -I"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\example_data" -O0 -fno-common -g3 -gdwarf-4 -Wall -c -ffunction-sections -fdata-sections -ffreestanding -fno-builtin -fmerge-constants -fmacro-prefix-map="$(<D)/"= -mcpu=cortex-m33 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -D__REDLIB__ -fstack-usage -specs=redlib.specs -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 
@@ -40,7 +43,7 @@ onsemi/Source/%.o: ../onsemi/Source/%.c onsemi/Source/subdir.mk
 clean: clean-onsemi-2f-Source
 
 clean-onsemi-2f-Source:
-	-$(RM) ./onsemi/Source/NCN26010.d ./onsemi/Source/NCN26010.o ./onsemi/Source/T1S_FreeRTOS_OS.d ./onsemi/Source/T1S_FreeRTOS_OS.o ./onsemi/Source/T1S_FreeRTOS_TCP-IP.d ./onsemi/Source/T1S_FreeRTOS_TCP-IP.o ./onsemi/Source/freemaster_integration.d ./onsemi/Source/freemaster_integration.o ./onsemi/Source/onsemi_hardware.d ./onsemi/Source/onsemi_hardware.o ./onsemi/Source/udpecho.d ./onsemi/Source/udpecho.o
+	-$(RM) ./onsemi/Source/NCN26010.d ./onsemi/Source/NCN26010.o ./onsemi/Source/T1S_FreeRTOS_OS.d ./onsemi/Source/T1S_FreeRTOS_OS.o ./onsemi/Source/T1S_FreeRTOS_TCP-IP.d ./onsemi/Source/T1S_FreeRTOS_TCP-IP.o ./onsemi/Source/freemaster_example.d ./onsemi/Source/freemaster_example.o ./onsemi/Source/freemaster_integration.d ./onsemi/Source/freemaster_integration.o ./onsemi/Source/onsemi_hardware.d ./onsemi/Source/onsemi_hardware.o ./onsemi/Source/udpecho.d ./onsemi/Source/udpecho.o
 
 .PHONY: clean-onsemi-2f-Source
 

@@ -118,24 +118,31 @@ FMSTR_S32 _FMSTR_NetOnsemiUdpRecv(FMSTR_BPTR msgBuff,
 
     // Receive data from a client
 
-    recvSize = FreeRTOS_recvfrom(fmstrUdpConn, msgBuff, msgMaxSize, 0, &xClientAddress, &xSize);
+    recvSize = FreeRTOS_recvfrom(fmstrUdpConn, (void *)msgBuff, msgMaxSize, 0, &xClientAddress, &xSize);
 	if (recvSize > 0) {
 		char ip[16];
 		FreeRTOS_inet_ntoa(xClientAddress.sin_addr, ip);
 		PRINTF("Received %d bytes from %s on port %d: %s\n", recvSize, ip, FreeRTOS_ntohs(xClientAddress.sin_port), msgBuff);
 
-		_FMSTR_NetAddrFromFmstr(recvAddr, &xClientAddress);
-		for(int i=0; i<4; i++){
-			PRINTF("%d", recvAddr->addr.v4[i]);
-			if(i<3)PRINTF(".");
-		}
-		PRINTF("\n");
+		int i=0;
+	    while(i<recvSize){
+	    	PRINTF("0x%x", msgBuff[i]);
+	    	i++;
+	    }
+	}
+	else{
+		return 0;
 	}
 
 
     /* Copy address of receiver */
 
-
+	_FMSTR_NetAddrFromFmstr(recvAddr, &xClientAddress);
+	for(int i=0; i<4; i++){
+		PRINTF("%d", recvAddr->addr.v4[i]);
+		if(i<3)PRINTF(".");
+	}
+	PRINTF("\n");
 
     return recvSize;
 }
@@ -180,7 +187,7 @@ void vUDPServerTask(void *pvParameters){
 
 
 	while(1){
-		_FMSTR_NetOnsemiUdpSend(&sendAddr, msgBuff, msgSize);
+//		_FMSTR_NetOnsemiUdpSend(&sendAddr, msgBuff, msgSize);
 		DelayMs(300);
 		_FMSTR_NetOnsemiUdpRecv((FMSTR_BPTR)msg, msgMaxSize, &recvAddr, &isBroadcast);
 	}
@@ -238,11 +245,11 @@ FMSTR_S32 _FMSTR_NetOnsemiUdpSend(FMSTR_NET_ADDR *sendAddr, FMSTR_BPTR msgBuff, 
     /* Copy destination address */
     destinationAddr = FMSTR_NET_ADDR_to_uint32(sendAddr);
 
-    PRINTF("sending %s ", msgBuff);
-    PRINTF("Message size = %d\n", msgSize);
-	char ip[16];
-	FreeRTOS_inet_ntoa(destinationAddr.sin_addr, ip);
-    PRINTF("Destination addr: %s\n", ip);
+//    PRINTF("sending %s ", msgBuff);
+//    PRINTF("Message size = %d\n", msgSize);
+//	char ip[16];
+//	FreeRTOS_inet_ntoa(destinationAddr.sin_addr, ip);
+//    PRINTF("Destination addr: %s\n", ip);
 
     /* Send data */
 	sentSize = (FMSTR_S32)FreeRTOS_sendto( fmstrUdpConn,				/* The socket being sent to. */

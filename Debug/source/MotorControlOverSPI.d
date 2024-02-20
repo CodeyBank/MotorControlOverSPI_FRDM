@@ -50,7 +50,17 @@ source/MotorControlOverSPI.o source/MotorControlOverSPI.d: \
  C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/T1S_TCP-IP.h \
  C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/ncn26010.h \
  C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/freemaster_integration.h \
- C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/udpecho.h
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/udpecho.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freemaster/freemaster.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freemaster/freemaster_defcfg.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\source/freemaster_cfg.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freemaster\platforms/freemaster_gen32le.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freemaster/freemaster_tsa.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freemaster/freemaster.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freemaster/freemaster_rec.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freemaster/freemaster_ures.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/freemaster_example.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freemaster/freemaster_net.h
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\board/board.h:
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\board/clock_config.h:
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\drivers/fsl_common.h:
@@ -102,3 +112,13 @@ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Pro
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/ncn26010.h:
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/freemaster_integration.h:
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/udpecho.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freemaster/freemaster.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freemaster/freemaster_defcfg.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\source/freemaster_cfg.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freemaster\platforms/freemaster_gen32le.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freemaster/freemaster_tsa.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freemaster/freemaster.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freemaster/freemaster_rec.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freemaster/freemaster_ures.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/freemaster_example.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\freemaster/freemaster_net.h:

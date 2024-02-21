@@ -56,10 +56,10 @@ extern NCN_PinDef_t reset_pin;
 #define EXAMPLE_THREAD_STACKSIZE 1024
 
 /* Priority of the temporary lwIP initialization thread. */
-#define EXAMPLE_FMSTR_THREAD_PRIO 3
+#define EXAMPLE_FMSTR_THREAD_PRIO tskIDLE_PRIORITY+1
 
 /* Priority of the temporary lwIP initialization thread. */
-#define EXAMPLE_APP_THREAD_PRIO 7
+#define EXAMPLE_APP_THREAD_PRIO tskIDLE_PRIORITY
 
 static FMSTR_BOOL fmstr_initialized = FMSTR_FALSE;
 
@@ -88,24 +88,27 @@ int main(void) {
     NCN26010_Init();
     FMSTR_NET_IF_CAPS caps;
     memset(&caps, 0, sizeof(caps));
+#ifdef interface_test
 //    start_task();
 //    vTaskCreateUDPServer( configMINIMAL_STACK_SIZE*6,tskIDLE_PRIORITY );
+#endif // interface_test
 
     /* FreeMaster task */
 	if(xTaskCreate(fmstr_task, "fmstr_task", EXAMPLE_THREAD_STACKSIZE, NULL, EXAMPLE_FMSTR_THREAD_PRIO, NULL) == pdFAIL)
 		PRINTF("fmstr_task: Task creation failed.");
-//
-//	/* Example application task */
-//	if(xTaskCreate(example_task, "example_task", EXAMPLE_THREAD_STACKSIZE -512, NULL, EXAMPLE_APP_THREAD_PRIO, NULL) == pdFAIL)
-//		PRINTF("example_task: Task creation failed.");
+
+	/* Example application task */
+	if(xTaskCreate(example_task, "example_task", EXAMPLE_THREAD_STACKSIZE, NULL, EXAMPLE_APP_THREAD_PRIO, NULL) == pdFAIL)
+		PRINTF("example_task: Task creation failed.");
 
 	FMSTR_ASSERT_RETURN(FMSTR_NET_DRV.GetCaps != NULL, 0);
 	FMSTR_NET_DRV.GetCaps(&caps);
 
+#ifdef interface_test
 	PRINTF("\n\nFreeMaster %s %s Example\n\n",
 		   ((caps.flags & FMSTR_NET_IF_CAPS_FLAG_UDP) != 0U ? "UDP" : "TCP"),
 		   (FMSTR_NET_BLOCKING_TIMEOUT == 0 ? "Non-Blocking" : "Blocking"));
-
+#endif
 
     OS_Start();
 
@@ -127,7 +130,7 @@ static void example_task(void *arg)
 {
     while(!fmstr_initialized)
     {
-        vTaskDelay(10);
+        vTaskDelay(50);
     };
 
     /* Generic example initialization code */
@@ -143,7 +146,7 @@ static void example_task(void *arg)
         /* Check the network connection and DHCP status periodically */
 //        Network_Poll();
     }
-    vTaskDelay(40);
+    vTaskDelay(10);
 }
 
 /*
@@ -173,7 +176,7 @@ static void fmstr_task(void *arg)
 #if FMSTR_NET_BLOCKING_TIMEOUT == 0
         vTaskDelay(1);
 #endif
-        vTaskDelay(10);
+        vTaskDelay(5);
     }
 }
 

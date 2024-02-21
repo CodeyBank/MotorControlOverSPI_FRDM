@@ -69,7 +69,7 @@ FMSTR_BOOL _FMSTR_NetOnsemiUdpInit(void)
 	/* Set up the local address. */
 
 	xLocalAddress.sin_port = FreeRTOS_htons( FMSTR_NET_PORT );
-	xLocalAddress.sin_addr = FreeRTOS_inet_addr( "0.0.0.0" ); // Bind to a specific local IP address
+	xLocalAddress.sin_addr = FreeRTOS_inet_addr( "0.0.0.0" ); // Bind to all interfaces
 	err = FreeRTOS_bind( fmstrUdpConn, &xLocalAddress, sizeof( xLocalAddress ) );
 
 	/* Bind address and port */
@@ -122,6 +122,7 @@ FMSTR_S32 _FMSTR_NetOnsemiUdpRecv(FMSTR_BPTR msgBuff,
 	if (recvSize > 0) {
 		char ip[16];
 		FreeRTOS_inet_ntoa(xClientAddress.sin_addr, ip);
+#ifdef interface_test
 		PRINTF("Received %d bytes from %s on port %d: %s\n", recvSize, ip, FreeRTOS_ntohs(xClientAddress.sin_port), msgBuff);
 
 		int i=0;
@@ -129,6 +130,7 @@ FMSTR_S32 _FMSTR_NetOnsemiUdpRecv(FMSTR_BPTR msgBuff,
 	    	PRINTF("0x%x", msgBuff[i]);
 	    	i++;
 	    }
+#endif // interface_test
 	}
 	else{
 		return 0;
@@ -138,12 +140,13 @@ FMSTR_S32 _FMSTR_NetOnsemiUdpRecv(FMSTR_BPTR msgBuff,
     /* Copy address of receiver */
 
 	_FMSTR_NetAddrFromFmstr(recvAddr, &xClientAddress);
+#ifdef interface_test
 	for(int i=0; i<4; i++){
 		PRINTF("%d", recvAddr->addr.v4[i]);
 		if(i<3)PRINTF(".");
 	}
 	PRINTF("\n");
-
+#endif // interface_test
     return recvSize;
 }
 
@@ -167,6 +170,7 @@ void _FMSTR_NetAddrFromFmstr(FMSTR_NET_ADDR *fmstrAddr, struct freertos_sockaddr
 }
 
 void vUDPServerTask(void *pvParameters){
+#ifdef interface_test
 	_FMSTR_NetOnsemiUdpInit();
 	FMSTR_SIZE msgMaxSize =256;
 	unsigned char *msg[msgMaxSize];
@@ -191,7 +195,7 @@ void vUDPServerTask(void *pvParameters){
 		DelayMs(300);
 		_FMSTR_NetOnsemiUdpRecv((FMSTR_BPTR)msg, msgMaxSize, &recvAddr, &isBroadcast);
 	}
-	vTaskDelay(( TickType_t ) 250 / portTICK_RATE_MS);
+	vTaskDelay(( TickType_t ) 250 / portTICK_PERIOD_MS);
 }
 
 void start_task(void){
@@ -199,6 +203,7 @@ void start_task(void){
 	if( UdpTaskHandle!= NULL){
 		PRINTF("Successfully created UDP server \n");
 	};
+#endif // interface_test
 }
 
 static void uint32_to_ipv4_array(uint32_t xSocket_addr, uint8_t ipv4_array[4])
@@ -245,12 +250,13 @@ FMSTR_S32 _FMSTR_NetOnsemiUdpSend(FMSTR_NET_ADDR *sendAddr, FMSTR_BPTR msgBuff, 
     /* Copy destination address */
     destinationAddr = FMSTR_NET_ADDR_to_uint32(sendAddr);
 
-//    PRINTF("sending %s ", msgBuff);
-//    PRINTF("Message size = %d\n", msgSize);
-//	char ip[16];
-//	FreeRTOS_inet_ntoa(destinationAddr.sin_addr, ip);
-//    PRINTF("Destination addr: %s\n", ip);
-
+#ifdef interface_test
+    PRINTF("sending %s ", msgBuff);
+    PRINTF("Message size = %d\n", msgSize);
+	char ip[16];
+	FreeRTOS_inet_ntoa(destinationAddr.sin_addr, ip);
+    PRINTF("Destination addr: %s\n", ip);
+#endif // interface_test
     /* Send data */
 	sentSize = (FMSTR_S32)FreeRTOS_sendto( fmstrUdpConn,				/* The socket being sent to. */
 					( void * ) msgBuff,	/* The data being sent. */
@@ -261,7 +267,7 @@ FMSTR_S32 _FMSTR_NetOnsemiUdpSend(FMSTR_NET_ADDR *sendAddr, FMSTR_BPTR msgBuff, 
 
     if (sentSize<0)
     {
-    	PRINTF("Error occurred in datagram reception: %s \n", FreeRTOS_strerror_r(sentSize, errorbuffer, 256));
+    	PRINTF("Error occurred in datagram transmission: %s \n", FreeRTOS_strerror_r(sentSize, errorbuffer, 256));
     }
 
     return sentSize;
@@ -269,6 +275,12 @@ FMSTR_S32 _FMSTR_NetOnsemiUdpSend(FMSTR_NET_ADDR *sendAddr, FMSTR_BPTR msgBuff, 
 
 void _FMSTR_NetOnsemiUdpClose(FMSTR_NET_ADDR *addr)
 {
+	if (FreeRTOS_closesocket(fmstrUdpConn) ==0)
+		PRINTF("Successfully closed socket \n");
+	else
+		{
+			PRINTF("Failed to close socket \n");
+		}
 }
 
 void _FMSTR_NetOnsemiUdpGetCaps(FMSTR_NET_IF_CAPS *caps)

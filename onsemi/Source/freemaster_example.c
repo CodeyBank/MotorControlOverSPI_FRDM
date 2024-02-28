@@ -379,11 +379,11 @@ static unsigned char tsa_dyn_table_storage[5 * sizeof(FMSTR_TSA_ENTRY)];
  *
  */
 
-FMSTR_TSA_TABLE_LIST_BEGIN()
-FMSTR_TSA_TABLE(first_table)
-FMSTR_TSA_TABLE(next_table)
-FMSTR_TSA_TABLE(files_and_links)
-FMSTR_TSA_TABLE_LIST_END()
+//FMSTR_TSA_TABLE_LIST_BEGIN()
+//FMSTR_TSA_TABLE(first_table)
+//FMSTR_TSA_TABLE(next_table)
+//FMSTR_TSA_TABLE(files_and_links)
+//FMSTR_TSA_TABLE_LIST_END()
 
 /****************************************************************************
  *

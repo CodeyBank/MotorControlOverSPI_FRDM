@@ -43,7 +43,7 @@ extern "C" {
 /* NCN_IRQ_Interrupt interrupt vector ID (number). */
 #define NCN_IRQ_INTERRUPT_INT_0_IRQN GPIO00_IRQn
 /* NCN_IRQ_Interrupt interrupt vector priority. */
-#define NCN_IRQ_INTERRUPT_INT_0_IRQ_PRIORITY 3
+#define NCN_IRQ_INTERRUPT_INT_0_IRQ_PRIORITY 2
 /* NCN_IRQ_Interrupt interrupt handler identifier. */
 #define NCN_IRQ_Handler GPIO00_IRQHandler
 /* Definition of peripheral ID */

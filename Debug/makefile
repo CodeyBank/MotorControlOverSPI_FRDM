@@ -13,6 +13,12 @@ RM := rm -rf
 -include source/subdir.mk
 -include onsemi/Source/subdir.mk
 -include onsemi/FreeRTOS-Plus-TCP/source/subdir.mk
+-include motor_control/pmsm/pmsm_float/state_machine/subdir.mk
+-include motor_control/pmsm/pmsm_float/mc_state_machine/subdir.mk
+-include motor_control/pmsm/pmsm_float/mc_identification/subdir.mk
+-include motor_control/pmsm/pmsm_float/mc_drivers/subdir.mk
+-include motor_control/pmsm/pmsm_float/mc_algorithms/subdir.mk
+-include motor_control/pmsm/pmsm_float/subdir.mk
 -include freertos/freertos-kernel/portable/MemMang/subdir.mk
 -include freertos/freertos-kernel/portable/GCC/ARM_CM33_NTZ/non_secure/subdir.mk
 -include freertos/freertos-kernel/subdir.mk
@@ -56,7 +62,7 @@ main-build: MotorControlOverSPI.axf
 MotorControlOverSPI.axf: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU Linker'
-	arm-none-eabi-gcc -nostdlib -Xlinker -Map="MotorControlOverSPI.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m33 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -T MotorControlOverSPI_Debug.ld -o "MotorControlOverSPI.axf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-gcc -nostdlib -L"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\rtcesl\CM33F_RTCESL_4.7.1_MCUX\AMCLIB" -L"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\rtcesl\CM33F_RTCESL_4.7.1_MCUX\GFLIB" -L"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\rtcesl\CM33F_RTCESL_4.7.1_MCUX\GDFLIB" -L"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\rtcesl\CM33F_RTCESL_4.7.1_MCUX\GMCLIB" -L"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\rtcesl\CM33F_RTCESL_4.7.1_MCUX\MLIB" -L"C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\motor_control\pmsm\pmsm_float\mc_algorithms\mcaa_lib\cm33f_mcux" -Xlinker -Map="MotorControlOverSPI.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m33 -mfpu=fpv5-sp-d16 -mfloat-abi=hard -mthumb -T MotorControlOverSPI_Debug.ld -o "MotorControlOverSPI.axf" $(OBJS) $(USER_OBJS) $(LIBS) -lAMCLIB -lGFLIB -lGDFLIB -lGMCLIB -lMLIB -lmcaa_lib
 	@echo 'Finished building target: $@'
 	@echo ' '
 

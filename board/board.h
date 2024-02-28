@@ -108,7 +108,7 @@
 #endif
 #define BOARD_SW2_NAME        "SW2"
 #define BOARD_SW2_IRQ         GPIO00_IRQn
-#define BOARD_SW2_IRQ_HANDLER GPIO00_IRQHandler
+//#define BOARD_SW2_IRQ_HANDLER GPIO00_IRQHandler
 
 #ifndef BOARD_SW3_GPIO
 #define BOARD_SW3_GPIO GPIO0
@@ -118,7 +118,7 @@
 #endif
 #define BOARD_SW3_NAME        "SW3"
 #define BOARD_SW3_IRQ         GPIO00_IRQn
-#define BOARD_SW3_IRQ_HANDLER GPIO00_IRQHandler
+//#define BOARD_SW3_IRQ_HANDLER GPIO00_IRQHandler
 
 /* USB PHY condfiguration */
 #define BOARD_USB_PHY_D_CAL     (0x04U)

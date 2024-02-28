@@ -1,3 +1,20 @@
-../source/MotorControlOverSPI.c:71:5:main	24	static
-../source/MotorControlOverSPI.c:126:13:example_task	16	static
-../source/MotorControlOverSPI.c:155:13:fmstr_task	16	static
+C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\drivers/fsl_common_arm.h:732:24:DisableGlobalIRQ	16	static
+C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\drivers/fsl_common_arm.h:758:20:EnableGlobalIRQ	24	static
+C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\drivers/fsl_gpio.h:358:20:GPIO_PortSet	16	static
+C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\drivers/fsl_gpio.h:373:20:GPIO_PortClear	16	static
+C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\drivers/fsl_gpio.h:388:20:GPIO_PortToggle	16	static
+C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\rtcesl\CM33F_RTCESL_4.7.1_MCUX\MLIB\Include/MLIB_PQ.h:137:20:RTCESL_PQ_Init	4	static
+C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\motor_control\pmsm\pmsm_float\state_machine/state_machine.h:104:20:SM_StateMachineFast	16	static
+C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\motor_control\pmsm\pmsm_float\state_machine/state_machine.h:117:20:SM_StateMachineSlow	16	static
+../source/MotorControlOverSPI.c:138:5:main	24	static
+../source/MotorControlOverSPI.c:246:13:motorcontrol_task	16	static
+../source/MotorControlOverSPI.c:276:13:fmstr_task	16	static
+../source/MotorControlOverSPI.c:314:6:ADC1_IRQHandler	24	static
+../source/MotorControlOverSPI.c:365:6:CTIMER0_IRQHandler	8	static
+../source/MotorControlOverSPI.c:425:13:DemoSpeedStimulator	8	static
+../source/MotorControlOverSPI.c:478:13:DemoPositionStimulator	8	static
+../source/MotorControlOverSPI.c:525:13:Application_Control_BL	8	static
+../source/MotorControlOverSPI.c:576:13:BOARD_InitSysTick	4	static
+../source/MotorControlOverSPI.c:596:6:BOARD_SW3_IRQ_HANDLER	8	static
+../source/MotorControlOverSPI.c:629:13:BOARD_Init	8	static
+../source/MotorControlOverSPI.c:648:13:BOARD_InitGPIO	4	static

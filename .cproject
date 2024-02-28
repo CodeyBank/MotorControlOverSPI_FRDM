@@ -104,6 +104,11 @@
 									<listOptionValue builtIn="false" value="__MCUXPRESSO"/>
 									<listOptionValue builtIn="false" value="__USE_CMSIS"/>
 									<listOptionValue builtIn="false" value="DEBUG"/>
+									<listOptionValue builtIn="false" value="PMSM_SNSLESS"/>
+									<listOptionValue builtIn="false" value="PMSM_SNSLESS_ENC"/>
+									<listOptionValue builtIn="false" value="BLDC_SNSLESS"/>
+									<listOptionValue builtIn="false" value="MID_EN"/>
+									<listOptionValue builtIn="false" value="MC_EXAMPLE"/>
 								</option>
 								<option id="com.crt.advproject.gcc.fpu.86173868" name="Floating point" superClass="com.crt.advproject.gcc.fpu" useByScannerDiscovery="true" value="com.crt.advproject.gcc.fpu.fpv5sp.hard" valueType="enumerated"/>
 								<option id="com.crt.advproject.gcc.thumb.511080172" name="Thumb mode" superClass="com.crt.advproject.gcc.thumb" useByScannerDiscovery="false" value="true" valueType="boolean"/>
@@ -127,12 +132,29 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/freemaster/platforms}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/freemaster/drivers}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/source}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/AMCLIB/Include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/GDFLIB/Include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/GFLIB/Include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/GMCLIB/Include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/MLIB/Include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/pmsm/pmsm_float/mc_algorithms}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/pmsm/pmsm_float/state_machine}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/pmsm/pmsm_float/mc_state_machine}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/freemaster}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/docs}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/pmsm/pmsm_float}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/bldc/mc_algorithms}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/bldc/state_machine}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/bldc/mc_state_machine}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/pmsm/pmsm_float/mc_identification}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/pmsm/pmsm_float/mc_algorithms/mcaa_lib/cm33f_mcux/Include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/MotorControlOverSPI/onsemi/Include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/MotorControlOverSPI/freertos/freertos-kernel/portable/GCC/ARM_CM33_NTZ}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/MotorControlOverSPI/freertos/freertos-kernel/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/MotorControlOverSPI/onsemi/FreeRTOS-Plus-TCP/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/MotorControlOverSPI/freertos/freertos-kernel/portable/GCC/ARM_CM33_NTZ/non_secure}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/MotorControlOverSPI/example_data}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/MotorControlOverSPI/motor_control/pmsm/pmsm_float/mc_drivers}&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.include.files.1268646542" name="Include files (-include)" superClass="gnu.c.compiler.option.include.files" useByScannerDiscovery="false"/>
 								<option id="com.crt.advproject.gcc.exe.debug.option.optimization.level.807944481" name="Optimization Level" superClass="com.crt.advproject.gcc.exe.debug.option.optimization.level" useByScannerDiscovery="true"/>
@@ -217,8 +239,22 @@
 								<option id="gnu.cpp.link.option.nodeflibs.2018090291" name="Do not use default libraries (-nodefaultlibs)" superClass="gnu.cpp.link.option.nodeflibs"/>
 								<option id="gnu.cpp.link.option.nostdlibs.214396314" name="No startup or default libs (-nostdlib)" superClass="gnu.cpp.link.option.nostdlibs" value="true" valueType="boolean"/>
 								<option id="gnu.cpp.link.option.strip.1002694811" name="Omit all symbol information (-s)" superClass="gnu.cpp.link.option.strip"/>
-								<option id="gnu.cpp.link.option.libs.256059832" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs"/>
-								<option id="gnu.cpp.link.option.paths.1522562482" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.cpp.link.option.libs.256059832" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="AMCLIB"/>
+									<listOptionValue builtIn="false" value="GFLIB"/>
+									<listOptionValue builtIn="false" value="GDFLIB"/>
+									<listOptionValue builtIn="false" value="GMCLIB"/>
+									<listOptionValue builtIn="false" value="MLIB"/>
+									<listOptionValue builtIn="false" value="mcaa_lib"/>
+								</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.cpp.link.option.paths.1522562482" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/AMCLIB}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/GFLIB}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/GDFLIB}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/GMCLIB}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/MLIB}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/pmsm/pmsm_float/mc_algorithms/mcaa_lib/cm33f_mcux}&quot;"/>
+								</option>
 								<option id="gnu.cpp.link.option.flags.1729393381" name="Linker flags" superClass="gnu.cpp.link.option.flags"/>
 								<option id="gnu.cpp.link.option.other.814298606" name="Other options (-Xlinker [option])" superClass="gnu.cpp.link.option.other"/>
 								<option id="gnu.cpp.link.option.userobjs.1662275384" name="Other objects" superClass="gnu.cpp.link.option.userobjs"/>
@@ -264,10 +300,10 @@
 								<option id="com.crt.advproject.link.gcc.multicore.slave.111755931" name="Multicore configuration" superClass="com.crt.advproject.link.gcc.multicore.slave"/>
 								<option id="com.crt.advproject.link.gcc.multicore.master.1097322816" name="Multicore master" superClass="com.crt.advproject.link.gcc.multicore.master"/>
 								<option id="com.crt.advproject.link.thumb.117270957" name="Thumb mode" superClass="com.crt.advproject.link.thumb" value="true" valueType="boolean"/>
-								<option id="com.crt.advproject.link.memory.load.image.197354713" name="Plain load image" superClass="com.crt.advproject.link.memory.load.image" value="" valueType="string"/>
+								<option id="com.crt.advproject.link.memory.load.image.197354713" name="Plain load image" superClass="com.crt.advproject.link.memory.load.image" value="false;" valueType="string"/>
 								<option defaultValue="com.crt.advproject.heapAndStack.mcuXpressoStyle" id="com.crt.advproject.link.memory.heapAndStack.style.2133831860" name="Heap and Stack placement" superClass="com.crt.advproject.link.memory.heapAndStack.style" valueType="enumerated"/>
-								<option id="com.crt.advproject.link.memory.heapAndStack.854534871" name="Heap and Stack options" superClass="com.crt.advproject.link.memory.heapAndStack" value="&amp;Heap:Default;Post Data;Default&amp;Stack:Default;End;Default" valueType="string"/>
-								<option id="com.crt.advproject.link.memory.data.9936274" name="Global data placement" superClass="com.crt.advproject.link.memory.data" value="" valueType="string"/>
+								<option id="com.crt.advproject.link.memory.heapAndStack.854534871" name="Heap and Stack options" superClass="com.crt.advproject.link.memory.heapAndStack" value="&amp;Heap:Default;Post Data;0x15000&amp;Stack:Default;End;Default" valueType="string"/>
+								<option id="com.crt.advproject.link.memory.data.9936274" name="Global data placement" superClass="com.crt.advproject.link.memory.data" value="Default" valueType="string"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="true" id="com.crt.advproject.link.memory.sections.503397477" name="Extra linker script input sections" superClass="com.crt.advproject.link.memory.sections" valueType="stringList"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="true" id="com.crt.advproject.link.gcc.multicore.master.userobjs.1548378844" name="Slave Objects (not visible)" superClass="com.crt.advproject.link.gcc.multicore.master.userobjs" valueType="userObjs"/>
 								<option id="com.crt.advproject.link.arch.1968740366" name="Architecture" superClass="com.crt.advproject.link.arch" value="com.crt.advproject.link.target.cm33" valueType="enumerated"/>
@@ -276,8 +312,22 @@
 								<option id="gnu.c.link.option.nostdlibs.1660117612" name="No startup or default libs (-nostdlib)" superClass="gnu.c.link.option.nostdlibs" value="true" valueType="boolean"/>
 								<option id="gnu.c.link.option.strip.781966113" name="Omit all symbol information (-s)" superClass="gnu.c.link.option.strip"/>
 								<option id="gnu.c.link.option.noshared.80565833" name="No shared libraries (-static)" superClass="gnu.c.link.option.noshared"/>
-								<option id="gnu.c.link.option.libs.326946907" name="Libraries (-l)" superClass="gnu.c.link.option.libs"/>
-								<option id="gnu.c.link.option.paths.1292299790" name="Library search path (-L)" superClass="gnu.c.link.option.paths"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.link.option.libs.326946907" name="Libraries (-l)" superClass="gnu.c.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="AMCLIB"/>
+									<listOptionValue builtIn="false" value="GFLIB"/>
+									<listOptionValue builtIn="false" value="GDFLIB"/>
+									<listOptionValue builtIn="false" value="GMCLIB"/>
+									<listOptionValue builtIn="false" value="MLIB"/>
+									<listOptionValue builtIn="false" value="mcaa_lib"/>
+								</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.link.option.paths.1292299790" name="Library search path (-L)" superClass="gnu.c.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/AMCLIB}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/GFLIB}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/GDFLIB}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/GMCLIB}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/MLIB}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/pmsm/pmsm_float/mc_algorithms/mcaa_lib/cm33f_mcux}&quot;"/>
+								</option>
 								<option id="gnu.c.link.option.ldflags.507660193" name="Linker flags" superClass="gnu.c.link.option.ldflags"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.link.option.other.1060871124" name="Other options (-Xlinker [option])" superClass="gnu.c.link.option.other" valueType="stringList">
 									<listOptionValue builtIn="false" value="-Map=&quot;${BuildArtifactFileBaseName}.map&quot;"/>
@@ -298,7 +348,7 @@
 								<option id="com.crt.advproject.link.gcc.lto.optmization.level.439422173" name="Link-time optimization level" superClass="com.crt.advproject.link.gcc.lto.optmization.level"/>
 								<option id="com.crt.advproject.link.manage.64066737" name="Manage linker script" superClass="com.crt.advproject.link.manage" value="true" valueType="boolean"/>
 								<option id="com.crt.advproject.link.script.1071429047" name="Linker script" superClass="com.crt.advproject.link.script" value="MotorControlOverSPI_Debug.ld" valueType="string"/>
-								<option id="com.crt.advproject.link.scriptdir.132678311" name="Script path" superClass="com.crt.advproject.link.scriptdir"/>
+								<option id="com.crt.advproject.link.scriptdir.132678311" name="Script path" superClass="com.crt.advproject.link.scriptdir" value="" valueType="string"/>
 								<option id="com.crt.advproject.link.crpenable.448367733" name="Enable automatic placement of Code Read Protection field in image" superClass="com.crt.advproject.link.crpenable"/>
 								<option id="com.crt.advproject.link.flashconfigenable.523331695" name="Enable automatic placement of Flash Configuration field in image" superClass="com.crt.advproject.link.flashconfigenable" value="true" valueType="boolean"/>
 								<option id="com.crt.advproject.link.ecrp.325017458" name="Enhanced CRP" superClass="com.crt.advproject.link.ecrp"/>
@@ -329,18 +379,24 @@
 							</tool>
 						</toolChain>
 					</folderInfo>
+					<fileInfo id="com.crt.advproject.config.exe.debug.979254566.541021776" name="FreeRTOSConfig.h" rcbsApplicability="disable" resourcePath="onsemi/Include/FreeRTOSConfig.h" toolsToInvoke=""/>
+					<fileInfo id="com.crt.advproject.config.exe.debug.979254566.1375588136" name="m1_sm_snsless.h" rcbsApplicability="disable" resourcePath="motor_control/pmsm/pmsm_float/mc_state_machine/m1_sm_snsless.h" toolsToInvoke=""/>
+					<fileInfo id="com.crt.advproject.config.exe.debug.979254566.1583520282" name="m1_bldc_appconfig.h" rcbsApplicability="disable" resourcePath="source/m1_bldc_appconfig.h" toolsToInvoke=""/>
 					<sourceEntries>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="CMSIS"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="board"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="component"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="device"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="drivers"/>
-						<entry excluding="freertos-kernel/portable/MemMang/heap_1.c|freertos-kernel/portable/MemMang/heap_5.c|freertos-kernel/portable/MemMang/heap_3.c|freertos-kernel/portable/MemMang/heap_2.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="freertos"/>
-						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="onsemi"/>
-						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="source"/>
+						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="example_data"/>
+						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="freemaster"/>
+						<entry excluding="freertos-kernel/portable/MemMang/heap_4.c|freertos-kernel/portable/MemMang/heap_1.c|freertos-kernel/portable/MemMang/heap_5.c|freertos-kernel/portable/MemMang/heap_2.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="freertos"/>
+						<entry excluding="pmsm/pmsm_float/mc_state_machine/m1_sm_snsless.h|pmsm/pmsm_float/mc_state_machine/m1_sm_snsless.c|bldc" flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="motor_control"/>
+						<entry excluding="Source/freemaster_example.c|Include/FreeRTOSConfig.h|Source/udpecho.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="onsemi"/>
+						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="rtcesl"/>
+						<entry excluding="m1_bldc_appconfig.h" flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="source"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="startup"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="utilities"/>
-						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="freemaster"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -451,6 +507,11 @@
 									<listOptionValue builtIn="false" value="__USE_CMSIS"/>
 									<listOptionValue builtIn="false" value="NDEBUG"/>
 									<listOptionValue builtIn="false" value="__REDLIB__"/>
+									<listOptionValue builtIn="false" value="PMSM_SNSLESS"/>
+									<listOptionValue builtIn="false" value="PMSM_SNSLESS_ENC"/>
+									<listOptionValue builtIn="false" value="BLDC_SNSLESS"/>
+									<listOptionValue builtIn="false" value="MID_EN"/>
+									<listOptionValue builtIn="false" value="MC_EXAMPLE"/>
 								</option>
 								<option id="gnu.c.compiler.option.preprocessor.undef.symbol.952831416" name="Undefined symbols (-U)" superClass="gnu.c.compiler.option.preprocessor.undef.symbol" useByScannerDiscovery="false"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.compiler.option.include.paths.183985930" name="Include paths (-I)" superClass="gnu.c.compiler.option.include.paths" useByScannerDiscovery="false" valueType="includePath">
@@ -467,6 +528,22 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/freemaster/platforms}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/freemaster/drivers}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/source}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/AMCLIB/Include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/GDFLIB/Include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/GFLIB/Include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/GMCLIB/Include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/MLIB/Include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/pmsm/pmsm_float/mc_algorithms}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/pmsm/pmsm_float/state_machine}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/pmsm/pmsm_float/mc_state_machine}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/freemaster}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/docs}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/pmsm/pmsm_float}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/bldc/mc_algorithms}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/bldc/state_machine}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/bldc/mc_state_machine}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/pmsm/pmsm_float/mc_identification}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/pmsm/pmsm_float/mc_algorithms/mcaa_lib/cm33f_mcux/Include}&quot;"/>
 								</option>
 								<option id="gnu.c.compiler.option.include.files.405603055" name="Include files (-include)" superClass="gnu.c.compiler.option.include.files" useByScannerDiscovery="false"/>
 								<option id="gnu.c.compiler.option.optimization.flags.951353847" name="Other optimization flags" superClass="gnu.c.compiler.option.optimization.flags" useByScannerDiscovery="false" value="-fno-common" valueType="string"/>
@@ -546,8 +623,22 @@
 								<option id="gnu.cpp.link.option.nodeflibs.1706329632" name="Do not use default libraries (-nodefaultlibs)" superClass="gnu.cpp.link.option.nodeflibs"/>
 								<option id="gnu.cpp.link.option.nostdlibs.607667127" name="No startup or default libs (-nostdlib)" superClass="gnu.cpp.link.option.nostdlibs" value="true" valueType="boolean"/>
 								<option id="gnu.cpp.link.option.strip.2082169869" name="Omit all symbol information (-s)" superClass="gnu.cpp.link.option.strip"/>
-								<option id="gnu.cpp.link.option.libs.1289354724" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs"/>
-								<option id="gnu.cpp.link.option.paths.429925728" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.cpp.link.option.libs.1289354724" name="Libraries (-l)" superClass="gnu.cpp.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="AMCLIB"/>
+									<listOptionValue builtIn="false" value="GFLIB"/>
+									<listOptionValue builtIn="false" value="GDFLIB"/>
+									<listOptionValue builtIn="false" value="GMCLIB"/>
+									<listOptionValue builtIn="false" value="MLIB"/>
+									<listOptionValue builtIn="false" value="mcaa_lib"/>
+								</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.cpp.link.option.paths.429925728" name="Library search path (-L)" superClass="gnu.cpp.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/AMCLIB}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/GFLIB}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/GDFLIB}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/GMCLIB}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/MLIB}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/pmsm/pmsm_float/mc_algorithms/mcaa_lib/cm33f_mcux}&quot;"/>
+								</option>
 								<option id="gnu.cpp.link.option.flags.488783250" name="Linker flags" superClass="gnu.cpp.link.option.flags"/>
 								<option id="gnu.cpp.link.option.other.2121040337" name="Other options (-Xlinker [option])" superClass="gnu.cpp.link.option.other"/>
 								<option id="gnu.cpp.link.option.userobjs.1871913837" name="Other objects" superClass="gnu.cpp.link.option.userobjs"/>
@@ -604,8 +695,22 @@
 								<option id="gnu.c.link.option.nostdlibs.1107938184" name="No startup or default libs (-nostdlib)" superClass="gnu.c.link.option.nostdlibs" value="true" valueType="boolean"/>
 								<option id="gnu.c.link.option.strip.330847764" name="Omit all symbol information (-s)" superClass="gnu.c.link.option.strip"/>
 								<option id="gnu.c.link.option.noshared.725269071" name="No shared libraries (-static)" superClass="gnu.c.link.option.noshared"/>
-								<option id="gnu.c.link.option.libs.1494475814" name="Libraries (-l)" superClass="gnu.c.link.option.libs"/>
-								<option id="gnu.c.link.option.paths.440362360" name="Library search path (-L)" superClass="gnu.c.link.option.paths"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.link.option.libs.1494475814" name="Libraries (-l)" superClass="gnu.c.link.option.libs" valueType="libs">
+									<listOptionValue builtIn="false" value="AMCLIB"/>
+									<listOptionValue builtIn="false" value="GFLIB"/>
+									<listOptionValue builtIn="false" value="GDFLIB"/>
+									<listOptionValue builtIn="false" value="GMCLIB"/>
+									<listOptionValue builtIn="false" value="MLIB"/>
+									<listOptionValue builtIn="false" value="mcaa_lib"/>
+								</option>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.link.option.paths.440362360" name="Library search path (-L)" superClass="gnu.c.link.option.paths" valueType="libPaths">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/AMCLIB}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/GFLIB}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/GDFLIB}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/GMCLIB}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/rtcesl/CM33F_RTCESL_4.7.1_MCUX/MLIB}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/motor_control/pmsm/pmsm_float/mc_algorithms/mcaa_lib/cm33f_mcux}&quot;"/>
+								</option>
 								<option id="gnu.c.link.option.ldflags.1475838042" name="Linker flags" superClass="gnu.c.link.option.ldflags"/>
 								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="gnu.c.link.option.other.338611969" name="Other options (-Xlinker [option])" superClass="gnu.c.link.option.other" valueType="stringList">
 									<listOptionValue builtIn="false" value="-Map=&quot;${BuildArtifactFileBaseName}.map&quot;"/>
@@ -665,12 +770,14 @@
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="component"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="device"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="drivers"/>
+						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="freemaster"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="freertos"/>
+						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="motor_control"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="onsemi"/>
+						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="rtcesl"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="source"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="startup"/>
 						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="utilities"/>
-						<entry flags="LOCAL|VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="freemaster"/>
 					</sourceEntries>
 				</configuration>
 			</storageModule>
@@ -699,7 +806,7 @@
 	<storageModule moduleId="com.nxp.mcuxpresso.core.datamodels">
 		<sdkName>SDK_2.x_FRDM-MCXN947</sdkName>
 		<sdkVersion>2.14.0</sdkVersion>
-		<sdkComponents>middleware.baremetal.MCXN947;project_template.frdmmcxn947.MCXN947;platform.drivers.reset.MCXN947;platform.devices.MCXN947_system.MCXN947;utility.debug_console.MCXN947;platform.drivers.clock.MCXN947;platform.drivers.lpflexcomm_lpuart.MCXN947;component.lpuart_adapter.MCXN947;platform.drivers.port.MCXN947;component.serial_manager_uart.MCXN947;component.lists.MCXN947;platform.drivers.gpio.MCXN947;component.serial_manager.MCXN947;platform.utilities.assert.MCXN947;platform.drivers.mcx_spc.MCXN947;platform.drivers.lpflexcomm.MCXN947;CMSIS_Include_core_cm.MCXN947;platform.devices.MCXN947_CMSIS.MCXN947;platform.devices.MCXN947_startup.MCXN947;platform.drivers.common.MCXN947;platform.drivers.ctimer.MCXN947;platform.drivers.lpflexcomm_lpspi.MCXN947;docs.fmstr.MCXN947;middleware.fmstr.MCXN947;middleware.fmstr.platform_gen32le.MCXN947;middleware.fmstr.template_cfg_gen32le.MCXN947;</sdkComponents>
+		<sdkComponents>middleware.baremetal.MCXN947;project_template.frdmmcxn947.MCXN947;platform.drivers.reset.MCXN947;platform.devices.MCXN947_system.MCXN947;utility.debug_console.MCXN947;platform.drivers.clock.MCXN947;platform.drivers.lpflexcomm_lpuart.MCXN947;component.lpuart_adapter.MCXN947;platform.drivers.port.MCXN947;component.serial_manager_uart.MCXN947;component.lists.MCXN947;platform.drivers.gpio.MCXN947;component.serial_manager.MCXN947;platform.utilities.assert.MCXN947;platform.drivers.mcx_spc.MCXN947;platform.drivers.lpflexcomm.MCXN947;CMSIS_Include_core_cm.MCXN947;platform.devices.MCXN947_CMSIS.MCXN947;platform.devices.MCXN947_startup.MCXN947;platform.drivers.common.MCXN947;platform.drivers.ctimer.MCXN947;platform.drivers.lpflexcomm_lpspi.MCXN947;docs.fmstr.MCXN947;middleware.fmstr.MCXN947;middleware.fmstr.platform_gen32le.MCXN947;middleware.fmstr.template_cfg_gen32le.MCXN947;middleware.rtcesl.cm33f.MCXN947;middleware.mc_pmsm_snsless.float.MCXN947;middleware.mc_pmsm_enc.float.MCXN947;middleware.mc_bldc_snsless.frac.MCXN947;middleware.pmsm_mid.float.MCXN947;middleware.motor_control_pmsm_framework_float.tsa.MCXN947;middleware.motor_control_bldc_frac.template.MCXN947;middleware.motor_control_pmsm_float.template.MCXN947;middleware.motor_control.mcaa_cm33f.MCXN947;platform.drivers.lpadc.MCXN947;platform.drivers.inputmux.MCXN947;platform.drivers.inputmux_connections.MCXN947;platform.drivers.lpcmp.MCXN947;</sdkComponents>
 		<boardId>frdmmcxn947</boardId>
 		<package>MCXN947VDF</package>
 		<core>cm33</core>

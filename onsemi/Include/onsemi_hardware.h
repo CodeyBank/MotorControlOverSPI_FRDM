@@ -37,5 +37,6 @@ void NCN_SPI_Transfer(uint8_t* rx_buffer, uint8_t* tx_buffer, uint16_t num_bytes
 
 // ->Timer
 void DelayMs(uint32_t ms);
+void SetTick(uint32_t tick); // used for the cycle measurements
 
 #endif /* ONSEMI_HARDWARE_H_ */

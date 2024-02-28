@@ -25,6 +25,12 @@ freemaster \
 freertos/freertos-kernel \
 freertos/freertos-kernel/portable/GCC/ARM_CM33_NTZ/non_secure \
 freertos/freertos-kernel/portable/MemMang \
+motor_control/pmsm/pmsm_float \
+motor_control/pmsm/pmsm_float/mc_algorithms \
+motor_control/pmsm/pmsm_float/mc_drivers \
+motor_control/pmsm/pmsm_float/mc_identification \
+motor_control/pmsm/pmsm_float/mc_state_machine \
+motor_control/pmsm/pmsm_float/state_machine \
 onsemi/FreeRTOS-Plus-TCP/source \
 onsemi/Source \
 source \

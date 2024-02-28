@@ -5,7 +5,7 @@
  * Generated linker script file for MCXN947
  * Created from linkscript.ldt by FMCreateLinkLibraries
  * Using Freemarker v2.3.30
- * MCUXpresso IDE v11.9.0 [Build 2144] [2024-01-05] on Feb 20, 2024, 1:09:07 PM
+ * MCUXpresso IDE v11.9.0 [Build 2144] [2024-01-05] on Feb 28, 2024, 3:34:18 PM
  */
 
 INCLUDE "MotorControlOverSPI_Debug_library.ld"
@@ -293,7 +293,7 @@ SECTIONS
     } > SRAM AT> SRAM
 
     /* Reserve and place Heap within memory map */
-    _HeapSize = 0x1000;
+    _HeapSize = 0x15000;
     .heap (NOLOAD) :  ALIGN(4)
     {
         _pvHeapStart = .;

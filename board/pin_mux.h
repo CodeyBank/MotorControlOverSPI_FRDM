@@ -223,6 +223,31 @@ void BOARD_InitBUTTONsPins(void);
  */
 void NCN_Peripheral_Init(void);
 
+#define PCR_IBE_ibe1 0x01u /*!<@brief Input Buffer Enable: Enables */
+
+/*!
+ * @brief Configures pin routing and optionally pin electrical features.
+ *
+ */
+void MC_InitPWM(void);
+
+#define PCR_IBE_ibe0 0x00u /*!<@brief Input Buffer Enable: Disables */
+
+/*!
+ * @brief Configures pin routing and optionally pin electrical features.
+ *
+ */
+void MC_CMPInit(void);
+
+#define PCR_IBE_ibe0 0x00u        /*!<@brief Input Buffer Enable: Disables */
+#define PORT5_PCR_MUX_mux00 0x00u /*!<@brief Pin Multiplex Control: Alternative 0 (GPIO) */
+
+/*!
+ * @brief Configures pin routing and optionally pin electrical features.
+ *
+ */
+void MC_ADCInit(void);
+
 #if defined(__cplusplus)
 }
 #endif

@@ -15,6 +15,8 @@ board/pin_mux.o board/pin_mux.d: ../board/pin_mux.c \
  C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\drivers/fsl_reset.h \
  C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\drivers/fsl_port.h \
  C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\drivers/fsl_gpio.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\drivers/fsl_inputmux.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\drivers/fsl_inputmux_connections.h \
  ../board/pin_mux.h
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\drivers/fsl_common.h:
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\device/fsl_device_registers.h:
@@ -32,4 +34,6 @@ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Pro
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\drivers/fsl_reset.h:
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\drivers/fsl_port.h:
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\drivers/fsl_gpio.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\drivers/fsl_inputmux.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\drivers/fsl_inputmux_connections.h:
 ../board/pin_mux.h:

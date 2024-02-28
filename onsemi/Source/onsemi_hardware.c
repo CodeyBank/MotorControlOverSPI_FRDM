@@ -39,6 +39,10 @@ static void IncTick(void) {
 	g_uwtick++;
 }
 
+void SetTick(uint32_t tick){
+	g_uwtick=tick;
+}
+
 void NCN_Timebase_Callback(uint32_t flags) {
 	IncTick();
 #ifdef SE_DEBUG

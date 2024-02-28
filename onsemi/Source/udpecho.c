@@ -54,7 +54,7 @@ because simulated time is slower than real time. */
 #ifdef _WINDOWS_
 	const TickType_t xReceiveTimeOut = 50 / portTICK_RATE_MS;
 #else
-	const TickType_t xReceiveTimeOut = 500 / portTICK_RATE_MS;
+	const TickType_t xReceiveTimeOut = 500 / portTICK_PERIOD_MS;
 #endif
 
 /*-----------------------------------------------------------*/

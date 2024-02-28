@@ -299,6 +299,7 @@ pin_labels:
 #include "fsl_common.h"
 #include "fsl_port.h"
 #include "fsl_gpio.h"
+#include "fsl_inputmux.h"
 #include "pin_mux.h"
 
 /* FUNCTION ************************************************************************************************************
@@ -311,6 +312,9 @@ void BOARD_InitBootPins(void)
 {
     BOARD_InitDEBUG_UARTPins();
     NCN_Peripheral_Init();
+    MC_InitPWM();
+    MC_CMPInit();
+    MC_ADCInit();
 }
 
 /* clang-format off */
@@ -841,6 +845,186 @@ void NCN_Peripheral_Init(void)
 
                      /* Input Buffer Enable: Enables. */
                      | PORT_PCR_IBE(PCR_IBE_ibe1));
+}
+
+/* clang-format off */
+/*
+ * TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
+MC_InitPWM:
+- options: {callFromInitBoot: 'true', coreID: cm33_core0, enableClock: 'true'}
+- pin_list:
+  - {pin_num: K2, peripheral: PWM1, signal: 'A, 0', pin_signal: PIO2_6/TRIG_IN4/FC9_P4/SDHC0_D3/SCT0_OUT4/PWM1_A0/FLEXIO0_D14/FLEXSPI0_B_DATA2/SINC0_MCLK2/SAI0_TX_BCLK}
+  - {pin_num: K3, peripheral: PWM1, signal: 'A, 1', pin_signal: PIO2_4/WUU0_IN17/FC9_P0/SDHC0_CLK/SCT0_OUT2/PWM1_A1/FLEXIO0_D12/FLEXSPI0_B_DATA0/SINC0_MCLK1/SAI0_RXD1}
+  - {pin_num: H3, peripheral: PWM1, signal: 'A, 2', pin_signal: PIO2_2/WUU0_IN16/CLKOUT/FC9_P3/SDHC0_D1/SCT0_OUT0/PWM1_A2/FLEXIO0_D10/FLEXSPI0_B_SS0_b/SINC0_MCLK0/SAI0_TXD0}
+  - {pin_num: L2, peripheral: PWM1, signal: 'B, 0', pin_signal: PIO2_7/TRIG_IN5/FC9_P5/SDHC0_D2/SCT0_OUT5/PWM1_B0/FLEXIO0_D15/FLEXSPI0_B_DATA3/SINC0_MBIT2/SAI0_TX_FS}
+  - {pin_num: K1, peripheral: PWM1, signal: 'B, 1', pin_signal: PIO2_5/TRIG_OUT3/FC9_P2/SDHC0_CMD/SCT0_OUT3/PWM1_B1/FLEXIO0_D13/FLEXSPI0_B_DATA1/SINC0_MBIT1/SAI0_TXD1}
+  - {pin_num: J3, peripheral: PWM1, signal: 'B, 2', pin_signal: PIO2_3/FC9_P1/SDHC0_D0/SCT0_OUT1/PWM1_B2/FLEXIO0_D11/FLEXSPI0_B_SCLK/SINC0_MBIT0/SAI0_RXD0}
+  - {peripheral: PWM1, signal: 'PWM_FAULT_TRG_CH, 0', pin_signal: CMP1_OUT}
+ * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
+ */
+/* clang-format on */
+
+/* FUNCTION ************************************************************************************************************
+ *
+ * Function Name : MC_InitPWM
+ * Description   : Configures pin routing and optionally pin electrical features.
+ *
+ * END ****************************************************************************************************************/
+void MC_InitPWM(void)
+{
+    /* Enables the clock for INPUTMUX: Enables clock */
+    CLOCK_EnableClock(kCLOCK_InputMux0);
+    /* Enables the clock for PORT2: Enables clock */
+    CLOCK_EnableClock(kCLOCK_Port2);
+    /* CMP1_OUT is selected as trigger input for FlexPWM1 FAULT0 0 */
+    INPUTMUX_AttachSignal(INPUTMUX0, 0U, kINPUTMUX_Cmp1OutToFlexPwm1Fault0);
+
+    /* PORT2_2 (pin H3) is configured as PWM1_A2 */
+    PORT_SetPinMux(PORT2, 2U, kPORT_MuxAlt5);
+
+    PORT2->PCR[2] = ((PORT2->PCR[2] &
+                      /* Mask bits to zero which are setting */
+                      (~(PORT_PCR_IBE_MASK)))
+
+                     /* Input Buffer Enable: Enables. */
+                     | PORT_PCR_IBE(PCR_IBE_ibe1));
+
+    /* PORT2_3 (pin J3) is configured as PWM1_B2 */
+    PORT_SetPinMux(PORT2, 3U, kPORT_MuxAlt5);
+
+    PORT2->PCR[3] = ((PORT2->PCR[3] &
+                      /* Mask bits to zero which are setting */
+                      (~(PORT_PCR_IBE_MASK)))
+
+                     /* Input Buffer Enable: Enables. */
+                     | PORT_PCR_IBE(PCR_IBE_ibe1));
+
+    /* PORT2_4 (pin K3) is configured as PWM1_A1 */
+    PORT_SetPinMux(PORT2, 4U, kPORT_MuxAlt5);
+
+    PORT2->PCR[4] = ((PORT2->PCR[4] &
+                      /* Mask bits to zero which are setting */
+                      (~(PORT_PCR_IBE_MASK)))
+
+                     /* Input Buffer Enable: Enables. */
+                     | PORT_PCR_IBE(PCR_IBE_ibe1));
+
+    /* PORT2_5 (pin K1) is configured as PWM1_B1 */
+    PORT_SetPinMux(PORT2, 5U, kPORT_MuxAlt5);
+
+    PORT2->PCR[5] = ((PORT2->PCR[5] &
+                      /* Mask bits to zero which are setting */
+                      (~(PORT_PCR_IBE_MASK)))
+
+                     /* Input Buffer Enable: Enables. */
+                     | PORT_PCR_IBE(PCR_IBE_ibe1));
+
+    /* PORT2_6 (pin K2) is configured as PWM1_A0 */
+    PORT_SetPinMux(PORT2, 6U, kPORT_MuxAlt5);
+
+    PORT2->PCR[6] = ((PORT2->PCR[6] &
+                      /* Mask bits to zero which are setting */
+                      (~(PORT_PCR_IBE_MASK)))
+
+                     /* Input Buffer Enable: Enables. */
+                     | PORT_PCR_IBE(PCR_IBE_ibe1));
+
+    /* PORT2_7 (pin L2) is configured as PWM1_B0 */
+    PORT_SetPinMux(PORT2, 7U, kPORT_MuxAlt5);
+
+    PORT2->PCR[7] = ((PORT2->PCR[7] &
+                      /* Mask bits to zero which are setting */
+                      (~(PORT_PCR_IBE_MASK)))
+
+                     /* Input Buffer Enable: Enables. */
+                     | PORT_PCR_IBE(PCR_IBE_ibe1));
+}
+
+/* clang-format off */
+/*
+ * TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
+MC_CMPInit:
+- options: {callFromInitBoot: 'true', coreID: cm33_core0, enableClock: 'true'}
+- pin_list:
+  - {pin_num: B15, peripheral: CMP1, signal: 'IN, 1P', pin_signal: PIO0_3/TDI/FC1_P3/CT0_MAT1/UTICK_CAP1/HSCMP0_OUT/CMP1_IN1}
+ * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
+ */
+/* clang-format on */
+
+/* FUNCTION ************************************************************************************************************
+ *
+ * Function Name : MC_CMPInit
+ * Description   : Configures pin routing and optionally pin electrical features.
+ *
+ * END ****************************************************************************************************************/
+void MC_CMPInit(void)
+{
+    /* Enables the clock for PORT0 controller: Enables clock */
+    CLOCK_EnableClock(kCLOCK_Port0);
+
+    /* PORT0_3 (pin B15) is configured as CMP1_IN1 */
+    PORT_SetPinMux(PORT0, 3U, kPORT_MuxAlt0);
+
+    PORT0->PCR[3] = ((PORT0->PCR[3] &
+                      /* Mask bits to zero which are setting */
+                      (~(PORT_PCR_IBE_MASK)))
+
+                     /* Input Buffer Enable: Disables. */
+                     | PORT_PCR_IBE(PCR_IBE_ibe0));
+}
+
+/* clang-format off */
+/*
+ * TEXT BELOW IS USED AS SETTING FOR TOOLS *************************************
+MC_ADCInit:
+- options: {callFromInitBoot: 'true', coreID: cm33_core0, enableClock: 'true'}
+- pin_list:
+  - {pin_num: T3, peripheral: ADC1, signal: 'B, 0', pin_signal: ADC1_B0}
+  - {pin_num: M10, peripheral: ADC1, signal: 'B, 10', pin_signal: PIO5_2/VBAT_WAKEUP_b/SPC_LPREQ/TAMPER0/ADC1_B10}
+  - {pin_num: N11, peripheral: ADC1, signal: 'B, 11', pin_signal: PIO5_3/TRIG_IN11/RTC_CLKOUT/TAMPER1/ADC1_B11}
+  - {pin_num: M12, peripheral: ADC1, signal: 'B, 12', pin_signal: PIO5_4/TRIG_OUT7/SPC_LPREQ/TAMPER2/ADC1_B12}
+ * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS ***********
+ */
+/* clang-format on */
+
+/* FUNCTION ************************************************************************************************************
+ *
+ * Function Name : MC_ADCInit
+ * Description   : Configures pin routing and optionally pin electrical features.
+ *
+ * END ****************************************************************************************************************/
+void MC_ADCInit(void)
+{
+
+    PORT5->PCR[2] = ((PORT5->PCR[2] &
+                      /* Mask bits to zero which are setting */
+                      (~(PORT_PCR_MUX_MASK | PORT_PCR_IBE_MASK)))
+
+                     /* Pin Multiplex Control: PORT5_2 (pin M10) is configured as ADC1_B10. */
+                     | PORT_PCR_MUX(PORT5_PCR_MUX_mux00)
+
+                     /* Input Buffer Enable: Disables. */
+                     | PORT_PCR_IBE(PCR_IBE_ibe0));
+
+    PORT5->PCR[3] = ((PORT5->PCR[3] &
+                      /* Mask bits to zero which are setting */
+                      (~(PORT_PCR_MUX_MASK | PORT_PCR_IBE_MASK)))
+
+                     /* Pin Multiplex Control: PORT5_3 (pin N11) is configured as ADC1_B11. */
+                     | PORT_PCR_MUX(PORT5_PCR_MUX_mux00)
+
+                     /* Input Buffer Enable: Disables. */
+                     | PORT_PCR_IBE(PCR_IBE_ibe0));
+
+    PORT5->PCR[4] = ((PORT5->PCR[4] &
+                      /* Mask bits to zero which are setting */
+                      (~(PORT_PCR_MUX_MASK | PORT_PCR_IBE_MASK)))
+
+                     /* Pin Multiplex Control: PORT5_4 (pin M12) is configured as ADC1_B12. */
+                     | PORT_PCR_MUX(PORT5_PCR_MUX_mux00)
+
+                     /* Input Buffer Enable: Disables. */
+                     | PORT_PCR_IBE(PCR_IBE_ibe0));
 }
 /***********************************************************************************************************************
  * EOF

@@ -199,7 +199,7 @@ instance:
       - IRQn: 'GPIO00_IRQn'
       - enable_interrrupt: 'enabled'
       - enable_priority: 'true'
-      - priority: '3'
+      - priority: '2'
       - enable_custom_name: 'true'
       - handler_custom_name: 'NCN_IRQ_Handler'
     - enable_irq_1: 'false'
@@ -246,7 +246,7 @@ instance:
     - clockSource: 'clk_src0'
     - clockSourceFreq: 'BOARD_BootClockPLL150M'
     - master:
-      - baudRateBps: '8000000'
+      - baudRateBps: '12000000'
       - bitsPerFrame: '8'
       - cpol: 'kLPSPI_ClockPolarityActiveHigh'
       - cpha: 'kLPSPI_ClockPhaseFirstEdge'
@@ -272,7 +272,7 @@ instance:
  * BE CAREFUL MODIFYING THIS COMMENT - IT IS YAML SETTINGS FOR TOOLS **********/
 /* clang-format on */
 const lpspi_master_config_t NCN_SPI_config = {
-  .baudRate = 16000000UL,
+  .baudRate = 12000000UL,
   .bitsPerFrame = 8UL,
   .cpol = kLPSPI_ClockPolarityActiveHigh,
   .cpha = kLPSPI_ClockPhaseFirstEdge,

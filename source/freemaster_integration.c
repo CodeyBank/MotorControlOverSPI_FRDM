@@ -20,6 +20,7 @@
 #include "stdio.h"
 #include <stdlib.h>
 #include "FreeRTOS_errno_TCP.h"
+#define interface_test
 
 typedef struct freertos_sockaddr freertos_sockaddr_t;
 
@@ -91,6 +92,7 @@ FMSTR_BOOL _FMSTR_NetOnsemiUdpInit(void)
 
 void _FMSTR_NetOnsemiUdpPoll(void)
 {
+//	PRINTF("POLL\n");
 }
 
 FMSTR_S32 _FMSTR_NetOnsemiUdpRecv(FMSTR_BPTR msgBuff,

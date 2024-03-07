@@ -57,6 +57,7 @@ extern NCN_PinDef_t reset_pin;
 #include "mid_sm_states.h"
 #include "mc_periph_init.h"
 #include "fsl_gpio.h"
+#include "se_communication.h"
 
 /* Stack size of the temporary lwIP initialization thread. */
 #define EXAMPLE_THREAD_STACKSIZE 1024 * 2
@@ -131,6 +132,10 @@ app_ver_t g_sAppIdFM = {
 mid_app_cmd_t g_eMidCmd;                  /* Start/Stop MID command */
 ctrl_m1_mid_t g_sSpinMidSwitch;           /* Control Spin/MID switching */
 
+
+//uint8_t test_buf[MAX_TXRX_SIZE + 20] = {0};
+uint8_t t_buff[20];
+
 //**
 /*
  * @brief   Application entry point.
@@ -180,9 +185,6 @@ int main(void) {
 
 	/* Initialize RTCESL PQ */
 	RTCESL_PQ_Init();
-
-	/* SysTick initialization for CPU load measurement */
-	BOARD_InitSysTick();
 
 	/* Turn off application */
 	M1_SetAppSwitch(FALSE);
@@ -243,6 +245,7 @@ int main(void) {
 
 
 
+extern size_t g_table_size;
 static void motorcontrol_task(void *arg)
 {
     while(!fmstr_initialized)
@@ -252,19 +255,73 @@ static void motorcontrol_task(void *arg)
 
     /* Generic example initialization code */
 //    FMSTR_Example_Init_Ex(FMSTR_FALSE);
-    PRINTF("Example task initialzied \n");
+//    PRINTF("Example task initialzied \n");
+
+    // three variables
+    tU32 variable1 = 1223442334;
+    tU16 var2 = 35000;
+    tU8 var3 = 250;
+
+    MEMORY_TABLE_DECL_START()
+    SE_MEM_REC_CREATE(variable1, sU32, RO)
+	SE_MEM_REC_CREATE(var2, sU16, WO)
+	SE_MEM_REC_CREATE(var3, sU8, RW)
+    MEMORY_TABLE_DECL_CLOSE()
+
+	g_table_size = sizeof(MEM_TABLE) / sizeof(MEM_TABLE[0]);
+
+//	for(int i=0; i<g_table_size; i++){
+//
+//		PRINTF("variable name: %s address: 0x%x value: %d \n", MEM_TABLE[i].name, MEM_TABLE[i].address, *(uint16_t *)MEM_TABLE[i].address );
+//	}
+    commandheader_t cmd_header = {.command_type=load, .transaction_id=23342};
+	command_t cmd1 = {
+			.address = &var3, //4
+			.header = cmd_header, //5
+			.txrx_size = 1, //1
+			.data[0] = 30 //1
+	};
+
+	memory_table_init();
+	parse_command(&cmd1, MEM_TABLE);
+//
+//	uint8_t cmd1_sz = get_required_buffsize_from_cmdsize(cmd1);
+//	command_t cmd2 = {};
+//
+//
+//
+//	serialize_data(&cmd1, test_buf);
+//	deserialize_data(test_buf, &cmd2, cmd1_sz);
+
+//    serialize_mem_record(&MEM_TABLE, t_buff);
+
+
 
     while(1)
     {
         /* Increment test variables periodically, use the
            FreeMASTER PC Host tool to visualize the variables */
 //        FMSTR_Example_Poll_Ex(FMSTR_FALSE);
-    	Application_Control_BL();
+//    	Application_Control_BL();
+
+    	// try to read
+//    	commandheader_t cmd_header = {.command_type=write, .transaction_id=23342};
+//    	command_t cmd1 = {
+//    			.address = &var3,
+//    			.header = cmd_header,
+//				.txrx_size = 1,
+//				.data[0] = 30
+//    	};
+////
+//    	parse_command(&cmd1, MEM_TABLE);
+//    	PRINTF("Stored data: %d \n", cmd1.data[0]);
+//    	command_t *cmd = {{.address=&var1, .header={.transcation}}, {}, {}};
+
 
         /* Check the network connection and DHCP status periodically */
 //        Network_Poll();
     }
-    vTaskDelay(25);
+    vTaskDelay(2000);
 }
 
 /*
@@ -288,13 +345,14 @@ static void fmstr_task(void *arg)
            takes place (also see FMSTR_NET_BLOCKING_TIMEOUT option) */
         FMSTR_Poll();
 
+
         /* When no blocking timeout is specified, the FMSTR_Poll() returns
            immediately without any blocking. We need to sleep to let other
            tasks to run. */
 #if FMSTR_NET_BLOCKING_TIMEOUT == 0
         vTaskDelay(1);
 #endif
-        vTaskDelay(5);
+//        vTaskDelay(5);
     }
 }
 
@@ -313,10 +371,10 @@ static void fmstr_task(void *arg)
 
 void ADC1_IRQHandler(void)
 {
-    uint32_t ui32PrimaskReg;
+//    uint32_t ui32PrimaskReg;
     uint32_t starttime=0;
     /* Disable all interrupts before peripherals are initialized */
-    ui32PrimaskReg = DisableGlobalIRQ();
+//    ui32PrimaskReg = DisableGlobalIRQ();
 
     /* Start CPU tick number couting */
 //    SYSTICK_START_COUNT();
@@ -336,15 +394,15 @@ void ADC1_IRQHandler(void)
 
     /* Stop CPU tick number couting and store actual and maximum ticks */
     g_ui32NumberOfCycles = GetTick();
-    SYSTICK_STOP_COUNT(g_ui32NumberOfCycles);
+//    SYSTICK_STOP_COUNT(g_ui32NumberOfCycles);
     g_ui32MaxNumberOfCycles =
         g_ui32NumberOfCycles > g_ui32MaxNumberOfCycles ? g_ui32NumberOfCycles : g_ui32MaxNumberOfCycles;
 
     /* Enable interrupts  */
-    EnableGlobalIRQ(ui32PrimaskReg);
+//    EnableGlobalIRQ(ui32PrimaskReg);
 
     /* Call FreeMASTER recorder */
-    FMSTR_Recorder(0);
+//    FMSTR_Recorder(0);
 
     /* Clear the TCOMP INT flag */
     ADC1->STAT |= (uint32_t)(1U << 9);

@@ -62,7 +62,7 @@
 
 //! Network-specific communication options
 #define FMSTR_NET_PORT 3344            // FreeMASTER server port number (used for both TCP or UDP)
-#define FMSTR_NET_BLOCKING_TIMEOUT 100 // Blocking timeout (ms) of network calls used in FMSTR_Poll
+#define FMSTR_NET_BLOCKING_TIMEOUT 1000 // Blocking timeout (ms) of network calls used in FMSTR_Poll
 #define FMSTR_NET_AUTODISCOVERY 1      // Enable automatic board discovery via UDP protocol
 
 #define FMSTR_APPLICATION_STR "FreeMASTER FRDM-MCXN947"
@@ -72,10 +72,10 @@
 #define FMSTR_FLEXCAN_RXMB      1
 
 //! Input/output communication buffer size
-#define FMSTR_COMM_BUFFER_SIZE  1000   // Set to 0 for "automatic"
+#define FMSTR_COMM_BUFFER_SIZE  32  // Set to 0 for "automatic"
 
 //! Receive FIFO queue size (use with FMSTR_SHORT_INTR only)
-#define FMSTR_COMM_RQUEUE_SIZE  64  // Set to 0 for "default"
+#define FMSTR_COMM_RQUEUE_SIZE  32  // Set to 0 for "default"
 
 //! Support for Application Commands
 #define FMSTR_USE_APPCMD        1  // Enable/disable App.Commands support
@@ -83,17 +83,17 @@
 #define FMSTR_MAX_APPCMD_CALLS  4   // How many app.cmd callbacks? (0=disable)
 
 //! Oscilloscope support
-#define FMSTR_USE_SCOPE         2   // Specify number of supported oscilloscopes
-#define FMSTR_MAX_SCOPE_VARS    8   // Specify maximum number of scope variables per one oscilloscope
+#define FMSTR_USE_SCOPE        2   // Specify number of supported oscilloscopes
+#define FMSTR_MAX_SCOPE_VARS   8  // Specify maximum number of scope variables per one oscilloscope
 
 //! Recorder support
-#define FMSTR_USE_RECORDER      2   // Specify number of supported recorders
+#define FMSTR_USE_RECORDER      0   // Specify number of supported recorders
 
 //! Built-in recorder buffer
 #define FMSTR_REC_BUFF_SIZE     1024    // Built-in buffer size of recorder #0. Set to 0 to use runtime settings.
 
 //! Recorder time base, specifies how often the recorder is called in the user app.
-#define FMSTR_REC_TIMEBASE      FMSTR_REC_BASE_MILLISEC(15)  // 0 = "unknown"
+#define FMSTR_REC_TIMEBASE      FMSTR_REC_BASE_MILLISEC(0)  // 0 = "unknown"
 #define FMSTR_REC_FLOAT_TRIG    1   // Enable/disable floating point triggering
 
 // Target-side address translation (TSA)
@@ -103,7 +103,7 @@
 #define FMSTR_USE_TSA_DYNAMIC   1   // Enable/Disable TSA entries to be added also in runtime
 
 // Pipes as data streaming over FreeMASTER protocol
-#define FMSTR_USE_PIPES         3   // Specify number of supported pipe objects
+#define FMSTR_USE_PIPES         0  // Specify number of supported pipe objects
 
 // Enable/Disable read/write memory commands
 #define FMSTR_USE_READMEM       1   // Enable read memory commands

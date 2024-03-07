@@ -26,6 +26,7 @@ enum NCNERROR {
 	SUCCESS = 0U,
 	FAIL
 };
+typedef enum NCNERROR error_t;
 
 
 // -> GPIO Modifications

@@ -312,7 +312,9 @@ source/MotorControlOverSPI.o source/MotorControlOverSPI.d: \
  C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\motor_control\pmsm\pmsm_float\mc_algorithms\mcaa_lib\cm33f_mcux\Include/mcaa_lib_fp.h \
  C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\motor_control\pmsm\pmsm_float\mc_algorithms\mcaa_lib\cm33f_mcux\Include/MCAA_EstimRL_FLT.h \
  C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\motor_control\pmsm\pmsm_float\mc_identification/mid_mc_api_connector.h \
- ../source/mc_periph_init.h
+ ../source/mc_periph_init.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/se_communication.h \
+ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/onsemi_hardware.h
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\board/board.h:
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\board/clock_config.h:
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\drivers/fsl_common.h:
@@ -626,3 +628,5 @@ C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Pro
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\motor_control\pmsm\pmsm_float\mc_algorithms\mcaa_lib\cm33f_mcux\Include/MCAA_EstimRL_FLT.h:
 C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\motor_control\pmsm\pmsm_float\mc_identification/mid_mc_api_connector.h:
 ../source/mc_periph_init.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/se_communication.h:
+C:\Users\Stanley.Ezeh\Documents\09.MCXN\ Motor\ Control\Software\MCUXPresso\ Projects\MotorControlOverSPI\onsemi\Include/onsemi_hardware.h:

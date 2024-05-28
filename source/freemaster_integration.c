@@ -20,7 +20,7 @@
 #include "stdio.h"
 #include <stdlib.h>
 #include "FreeRTOS_errno_TCP.h"
-#define interface_test
+
 
 typedef struct freertos_sockaddr freertos_sockaddr_t;
 
@@ -177,13 +177,13 @@ void vUDPServerTask(void *pvParameters){
 	FMSTR_SIZE msgMaxSize =256;
 	unsigned char *msg[msgMaxSize];
 
-	FMSTR_NET_ADDR recvAddr,sendAddr;
+//	FMSTR_NET_ADDR recvAddr,sendAddr;
 	FMSTR_BOOL isBroadcast=FMSTR_FALSE;
 	FMSTR_BPTR msgBuff = (unsigned char *)malloc(50);
 
 	sprintf((char *)msgBuff, "Heart beat of life \n");
 
-	int msgSize = 50;
+//	int msgSize = 50;
 	sendAddr.type = FMSTR_NET_ADDR_TYPE_V4;
 	sendAddr.port = 1234;
 	sendAddr.addr.v4 [0] = 192;

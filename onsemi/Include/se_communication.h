@@ -20,9 +20,11 @@
 #define tCh char*
 #define tVoidPtr void *
 
-#define MAX_TXRX_SIZE 8   // max of 64bits
+#define MAX_TXRX_SIZE 50   // max of 64bits
 #define MAX_NUMBER_TABLES 8
+#define SE_MAX_BUFF_SIZE 50
 #define START_SYMBOL '+'
+#define START_SYMBOL_MEM_RECORD '*'
 #define STOP_SYMBOL '-'
 #define COMM_QUEUE_SIZE 10
 
@@ -52,6 +54,12 @@ typedef struct command {
 
 } command_t;
 
+typedef struct Message_S{
+
+	uint8_t size;
+	uint8_t * buffer;
+}SE_Message_t;
+
 /**
  * @brief command_parser decodes the command and decides which command
  * 		  is called before dispatching to the command handler. Basically
@@ -60,8 +68,6 @@ typedef struct command {
  *
  * return structure containing the type of command being serviced and the command_id
  **/
-
-command_t command_parser(command_t user_command);
 
 typedef struct memory_table_record {
 
@@ -96,8 +102,8 @@ static inline error_t se_add_table(const char *table_name) {
 #define RECORD_TYPE mem_record_t
 #define MEM_TABLE MemTable
 
-#define MEMORY_TABLE_DECL_START() \
-	const RECORD_TYPE MEM_TABLE[] = {
+#define MEMORY_TABLE_DECL_START(name) \
+	const RECORD_TYPE name[] = {
 
 #define MEMORY_TABLE_DECL_CLOSE()	\
 	};
@@ -122,7 +128,7 @@ static inline error_t se_add_table(const char *table_name) {
 
 
 
-error_t memory_table_init(void);
+error_t comm_task_init(void);
 
 /**
  * @brief read a value from the desired table
@@ -158,7 +164,7 @@ error_t load_table(const mem_record_t * table);
  *
  * @return
  * */
-error_t parse_command(command_t *in_cmd, mem_record_t *mem_table);
+error_t parse_command(command_t *in_cmd, const mem_record_t *mem_table);
 
 /**
  * @brief
@@ -167,7 +173,7 @@ error_t parse_command(command_t *in_cmd, mem_record_t *mem_table);
  *
  * @return
  * */
-void serialize_data(command_t *in_cmd, uint8_t* buffer);
+void serialize_cmd_struct(command_t *in_cmd, uint8_t* buffer);
 
 /**
  * @brief
@@ -185,7 +191,7 @@ uint8_t get_required_buffsize_from_cmdsize(command_t in_cmd);
  *
  * @return
  * */
-error_t deserialize_data(uint8_t *buffer, command_t *out_cmd, uint8_t buffer_size);
+error_t rebuild_cmd_struct(uint8_t *buffer, command_t *out_cmd, uint8_t buffer_size);
 
 /**
  * @brief
@@ -205,4 +211,13 @@ void serialize_mem_record(const mem_record_t *mem_record, uint8_t * buffer);
  * @return
  * */
 uint8_t get_mem_record_size(const mem_record_t *mem_record);
+
+/**
+ * @brief
+ *
+ * @params
+ *
+ * @return
+ * */
+void send_command_to_queue(const command_t *cmd);
 #endif /* INCLUDE_SE_COMMUNICATION_H_ */

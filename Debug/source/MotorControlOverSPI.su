@@ -6,15 +6,13 @@ C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projec
 C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\rtcesl\CM33F_RTCESL_4.7.1_MCUX\MLIB\Include/MLIB_PQ.h:137:20:RTCESL_PQ_Init	4	static
 C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\motor_control\pmsm\pmsm_float\state_machine/state_machine.h:104:20:SM_StateMachineFast	16	static
 C:\Users\Stanley.Ezeh\Documents\09.MCXN Motor Control\Software\MCUXPresso Projects\MotorControlOverSPI\motor_control\pmsm\pmsm_float\state_machine/state_machine.h:117:20:SM_StateMachineSlow	16	static
-../source/MotorControlOverSPI.c:143:5:main	24	static
-../source/MotorControlOverSPI.c:249:13:motorcontrol_task	96	static
-../source/MotorControlOverSPI.c:333:13:fmstr_task	16	static
-../source/MotorControlOverSPI.c:372:6:ADC1_IRQHandler	16	static
-../source/MotorControlOverSPI.c:423:6:CTIMER0_IRQHandler	8	static
-../source/MotorControlOverSPI.c:483:13:DemoSpeedStimulator	8	static
-../source/MotorControlOverSPI.c:536:13:DemoPositionStimulator	8	static
-../source/MotorControlOverSPI.c:583:13:Application_Control_BL	8	static
-../source/MotorControlOverSPI.c:634:13:BOARD_InitSysTick	4	static
-../source/MotorControlOverSPI.c:654:6:BOARD_SW3_IRQ_HANDLER	8	static
-../source/MotorControlOverSPI.c:687:13:BOARD_Init	8	static
-../source/MotorControlOverSPI.c:706:13:BOARD_InitGPIO	4	static
+../source/MotorControlOverSPI.c:163:5:main	24	static
+../source/MotorControlOverSPI.c:244:13:motorcontrol_task	16	static
+../source/MotorControlOverSPI.c:270:6:ADC1_IRQHandler	16	static
+../source/MotorControlOverSPI.c:318:6:CTIMER0_IRQHandler	8	static
+../source/MotorControlOverSPI.c:375:13:DemoSpeedStimulator	8	static
+../source/MotorControlOverSPI.c:428:13:DemoPositionStimulator	8	static
+../source/MotorControlOverSPI.c:475:13:Application_Control_BL	8	static
+../source/MotorControlOverSPI.c:535:6:BOARD_SW3_IRQ_HANDLER	8	static
+../source/MotorControlOverSPI.c:568:13:BOARD_Init	8	static
+../source/MotorControlOverSPI.c:587:13:BOARD_InitGPIO	4	static

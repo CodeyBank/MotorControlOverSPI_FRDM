@@ -25,7 +25,7 @@
             <file path="board/pin_mux.h" update_enabled="true"/>
          </generated_project_files>
          <pins_profile>
-            <processor_version>15.0.0</processor_version>
+            <processor_version>15.1.0</processor_version>
             <pin_labels>
                <pin_label pin_num="A1" pin_signal="PIO1_8/WUU0_IN10/LPTMR1_ALT3/TRACE_DATA0/FC4_P0/FC5_P4/CT_INP8/SCT0_OUT2/FLEXIO0_D16/PLU_OUT0/ENET0_TXD2/I3C1_SDA/TSI0_CH17/ADC1_A8" label="P1_8/J9[32]" identifier="DEBUG_UART_RX"/>
                <pin_label pin_num="B1" pin_signal="PIO1_9/TRACE_DATA1/FC4_P1/FC5_P5/CT_INP9/SCT0_OUT3/FLEXIO0_D17/PLU_OUT1/ENET0_TXD3/I3C1_SCL/TSI0_CH18/ADC1_A9" label="P1_9/J9[30]" identifier="DEBUG_UART_TX"/>
@@ -703,7 +703,7 @@
             <file path="board/clock_config.h" update_enabled="true"/>
          </generated_project_files>
          <clocks_profile>
-            <processor_version>15.0.0</processor_version>
+            <processor_version>15.1.0</processor_version>
          </clocks_profile>
          <clock_configurations>
             <clock_configuration name="BOARD_BootClockFRO12M" id_prefix="" prefix_user_defined="false">
@@ -1082,7 +1082,7 @@
             <file path="board/peripherals.h" update_enabled="true"/>
          </generated_project_files>
          <peripherals_profile>
-            <processor_version>15.0.0</processor_version>
+            <processor_version>15.1.0</processor_version>
          </peripherals_profile>
          <functional_groups>
             <functional_group name="BOARD_InitPeripherals" uuid="e5d1b37d-2343-4b4d-97fe-f554381dd2a6" called_from_default_init="false" id_prefix="" core="cm33_core0">

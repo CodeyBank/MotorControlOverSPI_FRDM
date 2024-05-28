@@ -397,7 +397,6 @@ static void prvIPTask(void *pvParameters)
     xIPTaskInitialised = pdTRUE;
 
     FreeRTOS_debug_printf(("prvIPTask started\n"));
-    PRINTF("prvIPTask started\n");
 
     /* Loop, processing IP events. */
     for (;;)

@@ -9,6 +9,7 @@
 #include "FreeRTOS_IP.h"
 #include "event_groups.h"
 #include "ncn26010.h"
+#include "se_communication.h"
 //#include "fsl_debug_console.h"
 #define PRINTF(...) (0)
 
@@ -35,6 +36,10 @@ uint32_t OS_Init() {
 //	xEventGroupHandle = xEventGroupCreateStatic( &xCreatedEventGroup );
 	xEventGroupHandle = xEventGroupCreate();
 
+
+
+	// initialize the communication stack
+	comm_task_init();
 	return OK;
 }
 

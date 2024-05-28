@@ -17,6 +17,7 @@
 #include "MCXN947_cm33_core0.h"
 #include "fsl_debug_console.h"
 #include "onsemi_hardware.h"
+#include "se_udp_communication.h"
 /* TODO: insert other include files here. */
 
 // FreeRTOS includes
@@ -30,7 +31,6 @@
 #include "ncn26010.h"
 #include "T1S_OS.h"
 #include "T1S_TCP-IP.h"
-#include "freemaster_integration.h"
 #include "udpecho.h"
 
 /* TODO: insert other definitions and declarations here. */
@@ -48,9 +48,6 @@ extern NCN_PinDef_t reset_pin;
 
 
 // freemaster integrations
-#include "freemaster.h"
-#include "freemaster_example.h"
-#include "freemaster_net.h"
 #include "m1_sm_snsless_enc.h"
 
 	// Motor control
@@ -60,7 +57,7 @@ extern NCN_PinDef_t reset_pin;
 #include "se_communication.h"
 
 /* Stack size of the temporary lwIP initialization thread. */
-#define EXAMPLE_THREAD_STACKSIZE 1024 * 2
+#define EXAMPLE_THREAD_STACKSIZE 256
 
 /* Priority of the temporary lwIP initialization thread. */
 #define EXAMPLE_FMSTR_THREAD_PRIO tskIDLE_PRIORITY+3
@@ -68,9 +65,6 @@ extern NCN_PinDef_t reset_pin;
 /* Priority of the temporary lwIP initialization thread. */
 #define EXAMPLE_APP_THREAD_PRIO tskIDLE_PRIORITY
 
-static FMSTR_BOOL fmstr_initialized = FMSTR_FALSE;
-
-static void fmstr_task(void *arg);
 static void motorcontrol_task(void *arg);
 
 
@@ -106,7 +100,6 @@ static void motorcontrol_task(void *arg);
     par1          = load - val
 
 static void BOARD_Init(void);
-static void BOARD_InitSysTick(void);
 static void DemoSpeedStimulator(void);
 static void DemoPositionStimulator(void);
 static void Application_Control_BL(void);
@@ -134,7 +127,34 @@ ctrl_m1_mid_t g_sSpinMidSwitch;           /* Control Spin/MID switching */
 
 
 //uint8_t test_buf[MAX_TXRX_SIZE + 20] = {0};
-uint8_t t_buff[20];
+uint8_t t_buff[20] = {"This dummy message"};
+float dummy = 182.456;
+extern SE_UDP_NET_DRV_V4_t udp_drv_obj;
+// test
+
+// three variables
+extern size_t g_table_size;
+
+MEMORY_TABLE_DECL_START(MEM_TABLE)
+SE_MEM_REC_CREATE(g_sSpinMidSwitch.bCmdRunM1, sU8, RW )
+SE_MEM_REC_CREATE(g_bM1SwitchAppOnOff, sU8, RW )
+SE_MEM_REC_CREATE(g_sM1Ctrl.eState, sU8, RW)
+SE_MEM_REC_CREATE(g_eM1StateRun, sU8, RW)
+SE_MEM_REC_CREATE(g_sM1Drive.sSpeed.fltSpeedFilt, sFLT, RO)
+SE_MEM_REC_CREATE(g_sM1Drive.sSpeed.fltSpeedCmd, sFLT, RW)
+SE_MEM_REC_CREATE(g_sM1Drive.sSpeed.fltSpeedFilt, sFLT, RW)
+SE_MEM_REC_CREATE(g_sSpinMidSwitch.eAppState, sU8, RW)
+SE_MEM_REC_CREATE(g_sM1Drive.sFaultIdPending, sU8, RW)
+SE_MEM_REC_CREATE(g_sM1Drive.bFaultClearMan, sU8, RW)
+SE_MEM_REC_CREATE(g_sSpinMidSwitch.sFaultCtrlM1_Mid, sU16, RW)
+SE_MEM_REC_CREATE(g_sM1Drive.sFocPMSM.sIABC.fltA, sFLT, RO)
+SE_MEM_REC_CREATE(g_sM1Drive.sFocPMSM.sIABC.fltB, sFLT, RO)
+SE_MEM_REC_CREATE(g_sM1Drive.sFocPMSM.sIABC.fltC, sFLT, RO)
+SE_MEM_REC_CREATE(g_sM1Drive.sFocPMSM.fltUDcBusFilt, sFLT, RO)
+SE_MEM_REC_CREATE(g_sM1Drive.sMCATctrl.sUDQReqMCAT.fltQ, sFLT, RO)
+SE_MEM_REC_CREATE(g_sM1Drive.sMCATctrl.sUDQReqMCAT.fltD, sFLT, RO)
+//SE_MEM_REC_CREATE(dummy, sFLT, RW)
+MEMORY_TABLE_DECL_CLOSE()
 
 //**
 /*
@@ -175,10 +195,6 @@ int main(void) {
     }
 #endif //SE_DEBUG
     NCN26010_Init();
-    FMSTR_NET_IF_CAPS caps;
-    memset(&caps, 0, sizeof(caps));
-
-
 
 /* Initialize peripheral motor control driver for motor M1 */
 	MCDRV_Init_M1();
@@ -190,7 +206,7 @@ int main(void) {
 	M1_SetAppSwitch(FALSE);
 
 	/* Init application state - Spin or MID */
-	g_sSpinMidSwitch.eAppState = kAppStateMID;
+	g_sSpinMidSwitch.eAppState = kAppStateSpin;
 
 	if(g_sSpinMidSwitch.eAppState == kAppStateMID)
 	{
@@ -203,31 +219,13 @@ int main(void) {
 	/* Enable interrupts  */
 	EnableGlobalIRQ(ui32PrimaskReg);
 
-	/* Start PWM */
-	g_sM1Pwm3ph.pui32PwmBaseAddress->MCTRL |= PWM_MCTRL_RUN(0xF);
+//	/* Start PWM */
+//	g_sM1Pwm3ph.pui32PwmBaseAddress->MCTRL |= PWM_MCTRL_RUN(0xF);
 
-
-#ifdef interface_test
-//    start_task();
-//    vTaskCreateUDPServer( configMINIMAL_STACK_SIZE*6,tskIDLE_PRIORITY );
-#endif // interface_test
-
-    /* FreeMaster task */
-	if(xTaskCreate(fmstr_task, "fmstr_task", EXAMPLE_THREAD_STACKSIZE, NULL, EXAMPLE_FMSTR_THREAD_PRIO, NULL) == pdFAIL)
-		PRINTF("fmstr_task: Task creation failed.");
-
+	g_table_size = sizeof(MEM_TABLE) / sizeof(MEM_TABLE[0]);
 	/* Example application task */
-	if(xTaskCreate(motorcontrol_task, "motorcontrol_task", EXAMPLE_THREAD_STACKSIZE, NULL, EXAMPLE_APP_THREAD_PRIO, NULL) == pdFAIL)
+	if(xTaskCreate(motorcontrol_task, "motorcontrol_task", EXAMPLE_THREAD_STACKSIZE, NULL, EXAMPLE_APP_THREAD_PRIO+2, NULL) == pdFAIL)
 		PRINTF("motorcontrol_task: Task creation failed.");
-
-	FMSTR_ASSERT_RETURN(FMSTR_NET_DRV.GetCaps != NULL, 0);
-	FMSTR_NET_DRV.GetCaps(&caps);
-
-#ifdef interface_test
-	PRINTF("\n\nFreeMaster %s %s Example\n\n",
-		   ((caps.flags & FMSTR_NET_IF_CAPS_FLAG_UDP) != 0U ? "UDP" : "TCP"),
-		   (FMSTR_NET_BLOCKING_TIMEOUT == 0 ? "Non-Blocking" : "Blocking"));
-#endif
 
     OS_Start();
 
@@ -243,117 +241,17 @@ int main(void) {
     return 0 ;
 }
 
-
-
-extern size_t g_table_size;
 static void motorcontrol_task(void *arg)
 {
-    while(!fmstr_initialized)
-    {
-        vTaskDelay(50);
-    };
+	/* Start PWM */
+	g_sM1Pwm3ph.pui32PwmBaseAddress->MCTRL |= PWM_MCTRL_RUN(0xF);
 
-    /* Generic example initialization code */
-//    FMSTR_Example_Init_Ex(FMSTR_FALSE);
-//    PRINTF("Example task initialzied \n");
-
-    // three variables
-    tU32 variable1 = 1223442334;
-    tU16 var2 = 35000;
-    tU8 var3 = 250;
-
-    MEMORY_TABLE_DECL_START()
-    SE_MEM_REC_CREATE(variable1, sU32, RO)
-	SE_MEM_REC_CREATE(var2, sU16, WO)
-	SE_MEM_REC_CREATE(var3, sU8, RW)
-    MEMORY_TABLE_DECL_CLOSE()
-
-	g_table_size = sizeof(MEM_TABLE) / sizeof(MEM_TABLE[0]);
-
-//	for(int i=0; i<g_table_size; i++){
-//
-//		PRINTF("variable name: %s address: 0x%x value: %d \n", MEM_TABLE[i].name, MEM_TABLE[i].address, *(uint16_t *)MEM_TABLE[i].address );
-//	}
-    commandheader_t cmd_header = {.command_type=load, .transaction_id=23342};
-	command_t cmd1 = {
-			.address = &var3, //4
-			.header = cmd_header, //5
-			.txrx_size = 1, //1
-			.data[0] = 30 //1
-	};
-
-	memory_table_init();
-	parse_command(&cmd1, MEM_TABLE);
-//
-//	uint8_t cmd1_sz = get_required_buffsize_from_cmdsize(cmd1);
-//	command_t cmd2 = {};
-//
-//
-//
-//	serialize_data(&cmd1, test_buf);
-//	deserialize_data(test_buf, &cmd2, cmd1_sz);
-
-//    serialize_mem_record(&MEM_TABLE, t_buff);
-
-
-
+	PRINTF("Motor task initialized \n");
     while(1)
     {
-        /* Increment test variables periodically, use the
-           FreeMASTER PC Host tool to visualize the variables */
-//        FMSTR_Example_Poll_Ex(FMSTR_FALSE);
-//    	Application_Control_BL();
-
-    	// try to read
-//    	commandheader_t cmd_header = {.command_type=write, .transaction_id=23342};
-//    	command_t cmd1 = {
-//    			.address = &var3,
-//    			.header = cmd_header,
-//				.txrx_size = 1,
-//				.data[0] = 30
-//    	};
-////
-//    	parse_command(&cmd1, MEM_TABLE);
-//    	PRINTF("Stored data: %d \n", cmd1.data[0]);
-//    	command_t *cmd = {{.address=&var1, .header={.transcation}}, {}, {}};
-
-
-        /* Check the network connection and DHCP status periodically */
-//        Network_Poll();
+    	Application_Control_BL();
     }
-    vTaskDelay(2000);
-}
-
-/*
- * FreeMASTER task.
- *
- * Network communication takes place here. This task sleeps when waiting
- * for a communication and lets the other example tasks to run.
- */
-static void fmstr_task(void *arg)
-{
-
-   /* FreeMASTER driver initialization */
-    FMSTR_Init();
-
-    fmstr_initialized = FMSTR_TRUE;
-
-    while(1)
-    {
-        /* The FreeMASTER poll handles the communication interface and protocol
-           processing. This call will block the task execution when no communication
-           takes place (also see FMSTR_NET_BLOCKING_TIMEOUT option) */
-        FMSTR_Poll();
-
-
-        /* When no blocking timeout is specified, the FMSTR_Poll() returns
-           immediately without any blocking. We need to sleep to let other
-           tasks to run. */
-#if FMSTR_NET_BLOCKING_TIMEOUT == 0
-        vTaskDelay(1);
-#endif
-//        vTaskDelay(5);
-    }
+    vTaskDelay(pdMS_TO_TICKS(300));
 }
 
 
@@ -400,9 +298,6 @@ void ADC1_IRQHandler(void)
 
     /* Enable interrupts  */
 //    EnableGlobalIRQ(ui32PrimaskReg);
-
-    /* Call FreeMASTER recorder */
-//    FMSTR_Recorder(0);
 
     /* Clear the TCOMP INT flag */
     ADC1->STAT |= (uint32_t)(1U << 9);
@@ -459,9 +354,6 @@ void CTIMER0_IRQHandler(void)
 
     /* Demo position stimulator */
     DemoPositionStimulator();
-
-    /* Call FreeMASTER recorder */
-    FMSTR_Recorder(0);
 
     /* Clear the match interrupt flag. */
     CTIMER0->IR |= CTIMER_IR_MR0INT(1U);
@@ -631,18 +523,7 @@ static void Application_Control_BL(void)
 /*!
  *@brief      SysTick initialization for CPU cycle measurement
  */
-static void BOARD_InitSysTick(void)
-{
-    /* Initialize SysTick core timer to run free */
-//    /* Set period to maximum value 2^24*/
-//    SysTick->LOAD = 0xFFFFFF;
-//
-//    /*Clock source - System Clock*/
-//    SysTick->CTRL |= SysTick_CTRL_CLKSOURCE_Msk;
-//
-//    /*Start Sys Timer*/
-//    SysTick->CTRL |= SysTick_CTRL_ENABLE_Msk;
-}
+
 
 /*!
  * @brief LPUART Module initialization (LPUART is a the standard block included e.g. in K66F)

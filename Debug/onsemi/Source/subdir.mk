@@ -8,21 +8,24 @@ C_SRCS += \
 ../onsemi/Source/T1S_FreeRTOS_OS.c \
 ../onsemi/Source/T1S_FreeRTOS_TCP-IP.c \
 ../onsemi/Source/onsemi_hardware.c \
-../onsemi/Source/se_communication.c 
+../onsemi/Source/se_communication.c \
+../onsemi/Source/se_udp_communication.c 
 
 C_DEPS += \
 ./onsemi/Source/NCN26010.d \
 ./onsemi/Source/T1S_FreeRTOS_OS.d \
 ./onsemi/Source/T1S_FreeRTOS_TCP-IP.d \
 ./onsemi/Source/onsemi_hardware.d \
-./onsemi/Source/se_communication.d 
+./onsemi/Source/se_communication.d \
+./onsemi/Source/se_udp_communication.d 
 
 OBJS += \
 ./onsemi/Source/NCN26010.o \
 ./onsemi/Source/T1S_FreeRTOS_OS.o \
 ./onsemi/Source/T1S_FreeRTOS_TCP-IP.o \
 ./onsemi/Source/onsemi_hardware.o \
-./onsemi/Source/se_communication.o 
+./onsemi/Source/se_communication.o \
+./onsemi/Source/se_udp_communication.o 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -37,7 +40,7 @@ onsemi/Source/%.o: ../onsemi/Source/%.c onsemi/Source/subdir.mk
 clean: clean-onsemi-2f-Source
 
 clean-onsemi-2f-Source:
-	-$(RM) ./onsemi/Source/NCN26010.d ./onsemi/Source/NCN26010.o ./onsemi/Source/T1S_FreeRTOS_OS.d ./onsemi/Source/T1S_FreeRTOS_OS.o ./onsemi/Source/T1S_FreeRTOS_TCP-IP.d ./onsemi/Source/T1S_FreeRTOS_TCP-IP.o ./onsemi/Source/onsemi_hardware.d ./onsemi/Source/onsemi_hardware.o ./onsemi/Source/se_communication.d ./onsemi/Source/se_communication.o
+	-$(RM) ./onsemi/Source/NCN26010.d ./onsemi/Source/NCN26010.o ./onsemi/Source/T1S_FreeRTOS_OS.d ./onsemi/Source/T1S_FreeRTOS_OS.o ./onsemi/Source/T1S_FreeRTOS_TCP-IP.d ./onsemi/Source/T1S_FreeRTOS_TCP-IP.o ./onsemi/Source/onsemi_hardware.d ./onsemi/Source/onsemi_hardware.o ./onsemi/Source/se_communication.d ./onsemi/Source/se_communication.o ./onsemi/Source/se_udp_communication.d ./onsemi/Source/se_udp_communication.o
 
 .PHONY: clean-onsemi-2f-Source
 

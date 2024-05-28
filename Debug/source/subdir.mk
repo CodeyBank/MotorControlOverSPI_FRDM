@@ -5,20 +5,20 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../source/MotorControlOverSPI.c \
-../source/freemaster_integration.c \
 ../source/mc_periph_init.c \
+../source/se_memory_records.c \
 ../source/semihost_hardfault.c 
 
 C_DEPS += \
 ./source/MotorControlOverSPI.d \
-./source/freemaster_integration.d \
 ./source/mc_periph_init.d \
+./source/se_memory_records.d \
 ./source/semihost_hardfault.d 
 
 OBJS += \
 ./source/MotorControlOverSPI.o \
-./source/freemaster_integration.o \
 ./source/mc_periph_init.o \
+./source/se_memory_records.o \
 ./source/semihost_hardfault.o 
 
 
@@ -34,7 +34,7 @@ source/%.o: ../source/%.c source/subdir.mk
 clean: clean-source
 
 clean-source:
-	-$(RM) ./source/MotorControlOverSPI.d ./source/MotorControlOverSPI.o ./source/freemaster_integration.d ./source/freemaster_integration.o ./source/mc_periph_init.d ./source/mc_periph_init.o ./source/semihost_hardfault.d ./source/semihost_hardfault.o
+	-$(RM) ./source/MotorControlOverSPI.d ./source/MotorControlOverSPI.o ./source/mc_periph_init.d ./source/mc_periph_init.o ./source/se_memory_records.d ./source/se_memory_records.o ./source/semihost_hardfault.d ./source/semihost_hardfault.o
 
 .PHONY: clean-source
 

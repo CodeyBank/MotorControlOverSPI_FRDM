@@ -249,9 +249,9 @@ static void motorcontrol_task(void *arg)
 	PRINTF("Motor task initialized \n");
     while(1)
     {
-    	Application_Control_BL();
+//    	Application_Control_BL();
     }
-    vTaskDelay(pdMS_TO_TICKS(300));
+    vTaskDelay(pdMS_TO_TICKS(300)); // communication timing issue??
 }
 
 
